@@ -16,6 +16,8 @@ def homepage(request):
 
 def homepage(request):
      print(request.GET)
+     print('Your request has been recieved ')
      return render(request, 'homepage.html')
+
 
 

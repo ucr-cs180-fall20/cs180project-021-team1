@@ -5,20 +5,22 @@
      <title>Homepage</title>
    </head>
    <body>
-   <h1>This is the homepage</h1>
+   <h1>Fifa homepage</h1>
+
 
    <form action=""method="GET">
-   <label for="your_name">Your name: </label>
-       <input id="your_name" type="text" name="your_name">
-  <input type="submit" value="OK" onclick="name has been recieved">
+   <label for="player_name">Your name: </label>
+       <input id="player_name" type="text" name="player_name">
+  <input type="submit" value="Request server" onclick="name has been recieved">
 </form>
 
-   <from action="" method="POST">
-         {% csrf_token %}
-         <label for="your_name">Your name: </label>
-         <input id="your_name" type="text" name="your_name">
-         <input type="submit" value="OK">
-   </from>
-   </form>
+      <button type="button" onclick="alert('Request received!')">See request!</button>
+
+<!--   <from action="" method="POST">-->
+<!--         {% csrf_token %}-->
+<!--         <label for="your_name">Your name: </label>-->
+<!--         <input id="your_name" type="text" name="your_name">-->
+<!--         <input type="submit" value="OK">-->
+<!--   </from>-->
    </body>
 </html>
