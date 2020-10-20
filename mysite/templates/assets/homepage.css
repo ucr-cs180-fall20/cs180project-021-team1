@@ -1,18 +1,54 @@
 h1{
   text-align: center;
+  background-color: aliceblue;
 }
+
 
 .topnav{
   overflow: hidden;
-  blackground-color: #d1ded1;
+  blackground-color: yellow;
 }
 
 .topnav a{
-  float: right;
+  float: left;
   display: block;
   color: black;
   text-align: center;
   padding: 14px 16px;
   font-size: 17px;
 }
+
+.topnav a:hover {
+  background: grey;
+  color: black;
+}
+
+.topnav a.active{
+  background-color: lightblue;
+  color: black;
+}
+
+
+.topnav input[type=text]{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search_bar{
+  float: right;
+}
+
+.topnav .search_bar button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: grey;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
 
