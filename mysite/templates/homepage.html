@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title> FIFA Database</title>
-<!--    <link rel="stylesheet" href="/css/master.css">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
   </head>
   <body>
     <h1>Welcome to the FIFA 2021 Database! </h1>
@@ -13,7 +14,7 @@
       <a href="#about"> About us</a>
       <div class="search_bar">
         <form action="https://google.com">
-          <input type="text" name="search" placeholder="Lionel Messi">
+          <input type="text" name="search" placeholder="Lionel Messi" id="searching_player">
           <button type="submit"><i class=""></i>></button>
         </form>
 
