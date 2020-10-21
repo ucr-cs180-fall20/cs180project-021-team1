@@ -37,5 +37,11 @@ def readCsv(path):
 
 playerList = readCsv(csvPath)
 
-for line in playerList:
+
+# print(type(playerList))
+# print(type(playerList[0]))
+# print(playerList[1] + "\n")
+# print(playerList[1].split(sep=';'))
+
+for line in playerList[1:3]:
     print(line)
