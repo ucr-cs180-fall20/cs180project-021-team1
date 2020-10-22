@@ -52,7 +52,7 @@ a:link {
     /* grid-column-gap: 1rem; */
 
 }
-.button-link {
+.button-link, .search_button{
   display: inline-block;
   text-align: center;
   border: 2px solid whitesmoke;
@@ -97,9 +97,16 @@ a:link {
 }
  */
 
-h1 {
-  color: pink;
+.search{
+  padding: 100px;
+  margin: auto;
+  height: 50%;
 }
-test {
-  background-color: yellow;
+
+.search_form_box{
+  padding-top: 200px;
+  height: 400px;
+  width: 400px;
+  background-color: aquamarine;
+
 }

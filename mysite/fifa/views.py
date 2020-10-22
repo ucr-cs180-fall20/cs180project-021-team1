@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .soccerPlayer import df
 
 
 def index(request):

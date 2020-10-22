@@ -16,10 +16,19 @@
         <a href="{% url 'map' %}" class="nav-link">Map</a>
         <a href="{% url 'add' %}" class="nav-link">Add</a>
         <a href="{% url 'ratings' %}" class="nav-link">Ratings</a>
-
-
-
     </div>
+
+    <div class="search">
+        <div class="search_form_box">
+          <form action="soccerPlayer.py" method="get">
+            <label for="searching_name">Player Name: </label>
+            <input id="name"type="text" name="name" placeholder="Player Name">
+            <button class="search_button"> SUBMIT</button>
+          </form>
+        </div>
+    </div>
+
+
 
 </body>
 
