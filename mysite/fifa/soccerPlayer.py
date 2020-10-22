@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 class SoccerPlayer:
     def __init__(self, player_id, name, nationality, position,
                  overall, age, hits, potential, team):
@@ -23,25 +26,27 @@ class SoccerPlayer:
                f"team: {self.team}"
 
 
-# sample player
-sc = SoccerPlayer(207650,"Emil Krafth", "Sweden", "RB", 73, 25, 1, 77, "Newcastle United")
-# print(sc)
-
-print("Reading in file\n")
 csvPath = '../../FIFA-21Complete.csv'
-
 def readCsv(path):
     DB = open(csvPath, 'r', encoding='utf8')
     myList = DB.readlines()
     return myList
 
 playerList = readCsv(csvPath)
+# print()
+# print(playerList[0])
+# print(playerList[1])
+players = []
+twoDList = []
+for line in playerList[1:10]:
+    elems = line.split(sep=';') # "\"FC Barcelona \"\\n"
+    twoDList.append(elems)
+    tmpPlayer = SoccerPlayer(elems[0],elems[1],elems[2],elems[3],elems[4],elems[5],elems[6], elems[7], elems[8])
+    players.append(tmpPlayer)
 
+# for elem in players:
+#     print(elem)
 
-# print(type(playerList))
-# print(type(playerList[0]))
-# print(playerList[1] + "\n")
-# print(playerList[1].split(sep=';'))
-
-for line in playerList[1:3]:
-    print(line)
+df = pd.DataFrame(twoDList, columns=['player_id', 'name', 'nationality', 'position',
+                                    'overall', 'age', 'hits', 'potential', 'team'])
+print(df[df['name'] == 'Lionel Messi'])
