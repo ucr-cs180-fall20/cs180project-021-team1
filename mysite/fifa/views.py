@@ -21,5 +21,17 @@ def homepage(request):
      print('Your request has been recieved ')
      return render(request, 'homepage.html')
 
+def add(request):
+     return render(request, 'add.html')
 
 
+def map(request):
+     return render(request, 'map.html')
+
+
+def ratings(request):
+     return render(request, 'ratings.html')
+
+
+def search(request):
+     return render(request, 'search.html')
