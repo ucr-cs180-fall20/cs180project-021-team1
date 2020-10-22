@@ -5,17 +5,33 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello, world. This is fifa app.")
 
-#def homepage(request):
+# def homepage(request):
+#     return render(request, 'homepage.html')
 
- #    return render(request, 'homepage.html')
-
+# def homepage(request):
+#      playerName=request.POST # playerName is the variable saved once searched. Use this to search Database.
+#      print(request.POST)
+#      print(playerName)
+#      return render(request, 'homepage.html')
+#
 def homepage(request):
-
-     print(request.POST)
-     return render(request, 'homepage.html')
-
-def homepage(request):
+     playerName = request.GET #playerName is the variable saved once searched. Use this to search Database.
      print(request.GET)
+     print(playerName)
+     print('Your request has been recieved ')
      return render(request, 'homepage.html')
 
+def add(request):
+     return render(request, 'add.html')
 
+
+def map(request):
+     return render(request, 'map.html')
+
+
+def ratings(request):
+     return render(request, 'ratings.html')
+
+
+def search(request):
+     return render(request, 'search.html')

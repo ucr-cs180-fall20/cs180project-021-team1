@@ -1,29 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 
-   <head>
-     <meta charset="utf-8">
-       <link rel="stylesheet" href="assets/site.css">
-     <title>Homepage</title>
-   </head>
-   <body>
-<!--   <div class="nav-bar">-->
-<!--    <li><a id="#homepage" href="homepage.html">FIFA</a></li>-->
-<!--  </div>-->
-   <h1>This is the homepage</h1>
+<head>
+  <meta charset="utf-8">
+  <title> FIFA Database</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
+</head>
 
-<!--   <form action=""method="GET">-->
-<!--    <label for="your_name">Your name: </label>-->
-<!--         <input class="btn" id="your_name" type="text" name="your_name">-->
-<!--    <input class="btn" type="submit" value="OK" onclick= alert("name has been recieved")>-->
-<!--    -->
-<!--   </form>-->
-<!--   <from action="" method="POST">-->
-<!--         {% csrf_token %}-->
-<!--         <label for="your_name">Your name: </label>-->
-<!--         <input class="btn" id="your_name" type="text" name="your_name">-->
-<!--         <input class="btn" type="submit" value="OK">-->
-<!--   </from>-->
-<!--   </form>-->
-   </body>
+<body>
+  {% load static %}
+  <div class="image">
+    <img src="{% static 'images/homepage.jpg' %}" alt="" width="100%">
+    <div class="navbar">
+      <a href="#FIFA21" class="fifa21 nav-link">FIFA21</a>
+      <a href="{% url 'search' %}" class="nav-link">Search</a>
+      <a href="{% url 'map' %}" class="nav-link">Map</a>
+      <a href="{% url 'add' %}" class="nav-link">Add</a>
+      <a href="{% url 'ratings' %}" class="nav-link">Ratings</a>
+
+      <!-- <div class="search_bar">
+        <form action="" method="get">
+  
+          <input type="text" name="search" placeholder="Lionel Messi" id="searching_player">
+          <button type="submit"><i class=""></i>></button>
+        </form>
+  
+      </div>-->
+    </div>
+    <div class="button-grid">
+      <a href="#search" class="button-link">Search</a>
+      <a href="#map" class="button-link">Map</a>
+      <a href="#add" class="button-link">Add</a>
+      <a href="#ratings" class="button-link">Ratings</a>
+    </div>
+  </div>
+
+</body>
+
 </html>
