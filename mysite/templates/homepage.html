@@ -1,29 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title> FIFA Database</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
-  </head>
-  <body>
-    <h1>Welcome to the FIFA 2021 Database! </h1>
-    <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#player_list">Players</a>
-      <a href="#about"> About us</a>
-      <div class="search_bar">
 
+<head>
+  <meta charset="utf-8">
+  <title> FIFA Database</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
+</head>
 
+<body>
+  {% load static %}
+  <div class="image">
+    <img src="{% static 'images/homepage.jpg' %}" alt="" width="100%">
+    <div class="navbar">
+      <a href="#FIFA21" class="fifa21 nav-link">FIFA21</a>
+      <a href="#search" class="nav-link">Search</a>
+      <a href="#map" class="nav-link">Map</a>
+      <a href="#add" class="nav-link">Add</a>
+      <a href="#ratings" class="nav-link">Ratings</a>
 
+      <!-- <div class="search_bar">
         <form action="" method="get">
-
+  
           <input type="text" name="search" placeholder="Lionel Messi" id="searching_player">
           <button type="submit"><i class=""></i>></button>
         </form>
-
-      </div>
-
+  
+      </div>-->
     </div>
-  </body>
+    <div class="button-grid">
+      <a href="#search" class="button-link">Search</a>
+      <a href="#map" class="button-link">Map</a>
+      <a href="#add" class="button-link">Add</a>
+      <a href="#ratings" class="button-link">Ratings</a>
+    </div>
+  </div>
+
+</body>
+
 </html>
