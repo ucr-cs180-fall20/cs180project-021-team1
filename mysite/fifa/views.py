@@ -35,6 +35,11 @@ def ratings(request):
 
 
 def search(request):
+
      player_name=request.POST
      print(player_name)
      return render(request, 'search.html')
+
+     #htmlPage = df.to_html()
+     # return render(request, 'search.html')
+     #return HttpResponse(htmlPage)
