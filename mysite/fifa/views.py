@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .soccerPlayer import df
+#from .soccerPlayer import df
 
 
 def index(request):
@@ -35,4 +35,6 @@ def ratings(request):
 
 
 def search(request):
+     player_name=request.POST
+     print(player_name)
      return render(request, 'search.html')
