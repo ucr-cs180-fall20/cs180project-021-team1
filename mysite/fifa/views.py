@@ -33,13 +33,16 @@ def map(request):
 def ratings(request):
      return render(request, 'ratings.html')
 
-
+#NOTE: comment line 41, uncoment line 43 and 45 to see entire dataset
 def search(request):
 
      # player_name=request.POST
      # print(player_name)
-     # return render(request, 'search.html')
+     return render(request, 'search.html')
 
-     htmlPage = df.to_html()
+     #htmlPage = df.to_html()
      # return render(request, 'search.html')
-     return HttpResponse(htmlPage)
+     #return HttpResponse(htmlPage)
+
+# def navbar(request):
+#      return render(request, 'navbar.html')
