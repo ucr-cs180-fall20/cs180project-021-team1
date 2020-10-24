@@ -65,17 +65,28 @@ a:link {
   text-align: center;
 }
 
-.button-link:hover, .search-button:hover {
- /*color: white;*/
+.button-link:hover, .search-button:hover, .add-button:hover {
  background-color: #37474f;
- /*background-color: #33920f;*/
+}
+
+.add-button{
+  border: 2px solid whitesmoke;
+  border-radius: 5px;
+  background-color: #90a4ae;
+  color: white;
+  height: 40px;
+  width: 80px;
+}
+
+.add-button-spacing{
+  padding: 30px;
 }
 
 @media (max-width: 890px) {
 }
 
 
-.search{
+.search, .add{
   padding: 100px;
   display: flex;
   /*margin: 25%;*/
@@ -88,10 +99,19 @@ a:link {
 
 }
 
-.search_form_box{
+.add_form_box{
   padding:100px;
   height: 400px;
   width: 800px;
+  background-color: #33920f;
+  /*border: 5px solid black;*/
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
+}
+
+.search_form_box{
+  padding:100px;
+  height: 400px;
+  width: 2000px;
   background-color: #33920f;
   /*border: 5px solid black;*/
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
@@ -102,9 +122,33 @@ a:link {
   grid-template-columns: repeat(3,1fr);
   grid-column-gap: 10px;
   align-items: center;
+
 }
 
 .text-field, #dropdown{
   border-radius: 10px;
   height: 35px;
+  text-align: center;
+}
+
+.add-grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-column-gap: 10px;
+  align-items: center;
+  /*grid-template-rows: repeat(6,1fr);*/
+  /*grid-row-gap: 10px;*/
+  grid-auto-flow: row;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.add-grid-com{
+  float: left;
+  width: 25%;
+}
+
+.add-grid-com-2{
+  float: left;
+  width: 75%;
 }
