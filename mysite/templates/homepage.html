@@ -9,7 +9,6 @@
 </head>
 
 <body>
-  {% load static %}
   <div class="image">
     <img src="{% static 'images/homepage.jpg' %}" alt="" width="100%">
     <div class="navbar">
@@ -19,20 +18,12 @@
       <a href="{% url 'add' %}" class="nav-link">Add</a>
       <a href="{% url 'ratings' %}" class="nav-link">Ratings</a>
 
-      <!-- <div class="search_bar">
-        <form action="" method="get">
-  
-          <input type="text" name="search" placeholder="Lionel Messi" id="searching_player">
-          <button type="submit"><i class=""></i>></button>
-        </form>
-  
-      </div>-->
     </div>
     <div class="button-grid">
-      <a href="#search" class="button-link">Search</a>
-      <a href="#map" class="button-link">Map</a>
-      <a href="#add" class="button-link">Add</a>
-      <a href="#ratings" class="button-link">Ratings</a>
+      <a href= "{% url 'search' %}" class="button-link">Search</a>
+      <a href="{% url 'map' %}" class="button-link">Map</a>
+      <a href="{% url 'add' %}" class="button-link">Add</a>
+      <a href="{% url 'ratings' %}" class="button-link">Ratings</a>
     </div>
   </div>
 

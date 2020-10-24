@@ -9,15 +9,35 @@
 </head>
 
 <body>
-    {% load static %}
     <div class="navbar">
         <a href="{% url 'homepage' %}" class="fifa21 nav-link">FIFA21</a>
         <a href="{% url 'search' %}" class="nav-link">Search</a>
         <a href="{% url 'map' %}" class="nav-link">Map</a>
         <a href="{% url 'add' %}" class="nav-link">Add</a>
         <a href="{% url 'ratings' %}" class="nav-link">Ratings</a>
-
     </div>
+
+    <div class="search">
+        <div class="search_form_box">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="search_grid">
+                <select id="dropdown">
+                    <option value="player_name">Player Name:</option>
+                    <option value="age">Age:</option>
+                    <option value="nationality">Nationality:</option>
+                    <option value="club">Club:</option>
+                    <option value="rating">Player Rating:</option>
+                    <option value="position">Position:</option>
+                </select>
+                <input class="text-field" id="name"type="text" name="name" placeholder="Enter info!">
+                <button class="search-button">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+    </div>
+
+
 
 </body>
 
