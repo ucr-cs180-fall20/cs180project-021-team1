@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .soccerPlayer import df
-
+from .soccerPlayer import searchPlayerName
 
 def index(request):
     return HttpResponse("Hello, world. This is fifa app.")
@@ -36,8 +36,8 @@ def ratings(request):
 #NOTE: comment line 41, uncoment line 43 and 45 to see entire dataset
 def search(request):
 
-     # player_name=request.POST
-     # print(player_name)
+     player_name=request.POST
+
      return render(request, 'search.html')
 
      #htmlPage = df.to_html()
@@ -46,3 +46,11 @@ def search(request):
 
 # def navbar(request):
 #      return render(request, 'navbar.html')
+
+def test(request):
+     htmlPage = searchPlayerName('Lionel Messi',df).to_html()
+
+
+
+     return HttpResponse(htmlPage)
+

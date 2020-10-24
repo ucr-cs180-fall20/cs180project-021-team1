@@ -30,8 +30,11 @@
                     <option value="rating">Player Rating:</option>
                     <option value="position">Position:</option>
                 </select>
+                <from action = "" method ="POST">
+                     {% csrf_token %}
                 <input class="text-field" id="name"type="text" name="name" placeholder="Enter info!">
-                <button class="search-button">SUBMIT</button>
+                <button class="search-button">SUBMIT  <a href="{% url 'test' %}">Continue</a> </button>
+                    </from>
             </div>
           </form>
         </div>

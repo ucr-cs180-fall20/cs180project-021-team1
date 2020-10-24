@@ -45,4 +45,14 @@ for line in playerList:
 
 df = pd.DataFrame(twoDList, columns=['player_id', 'name', 'nationality', 'position',
                                     'overall', 'age', 'hits', 'potential', 'team'])
-print(df[df['name'] == 'Lionel Messi'])
+#print(df[df['name'] == 'Lionel Messi'])
+
+
+def searchPlayerName(playerName,dataFrame):
+    dataFrame=dataFrame[dataFrame['name'] == playerName]
+    print(dataFrame)
+    return dataFrame
+
+searchPlayerName('Lionel Messi',df)
+
+print(df)
