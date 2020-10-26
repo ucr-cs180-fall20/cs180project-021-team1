@@ -51,8 +51,8 @@ df = pd.DataFrame(twoDList, columns=['player_id', 'name', 'nationality', 'positi
 # print(df[df['name'] == 'Lionel Messi'])
 
 
-def searchPlayerName(playerName, dataFrame):
-
+def searchPlayerName(playerName:str, dataFrame):
+    playerName = playerName.strip()
     if len(playerName) == 0:
         print('Please enter Player Name again')
         return
@@ -65,10 +65,11 @@ def searchPlayerName(playerName, dataFrame):
             print(dataFrame)
 
     return dataFrame
+# searchPlayerName('',df)
 
 
-def searchPlayerNationality(PlayerCountry, dataFrame):
-
+def searchPlayerNationality(PlayerCountry:str, dataFrame):
+    PlayerCountry = PlayerCountry.strip()
     if len(PlayerCountry) == 0:
         print('Please enter country again')
         return
@@ -82,8 +83,8 @@ def searchPlayerNationality(PlayerCountry, dataFrame):
 
     return dataFrame
 
-def searchPlayerTeam(PlayerTeam, dataFrame):
-
+def searchPlayerTeam(PlayerTeam:str, dataFrame):
+    PlayerTeam = PlayerTeam.strip()
     if len(PlayerTeam) == 0:
         print('Please enter team again')
         return
@@ -98,8 +99,8 @@ def searchPlayerTeam(PlayerTeam, dataFrame):
     return dataFrame
 
 
-def searchPlayerPosition(PlayerPosition, dataFrame):
-
+def searchPlayerPosition(PlayerPosition:str, dataFrame):
+    PlayerPosition = PlayerPosition.strip()
     if len(PlayerPosition) == 0:
         print('Please enter position again')
         return
@@ -114,8 +115,8 @@ def searchPlayerPosition(PlayerPosition, dataFrame):
     return dataFrame
 
 
-def searchPlayerAge(PlayerAge, dataFrame):
-
+def searchPlayerAge(PlayerAge:str, dataFrame):
+    PlayerAge = PlayerAge.strip()
     if len(PlayerAge) == 0:
         print('Please enter again')
         return
@@ -130,8 +131,8 @@ def searchPlayerAge(PlayerAge, dataFrame):
     return dataFrame
 
 
-def searchPlayerRating(PlayerRating, dataFrame):
-
+def searchPlayerRating(PlayerRating:str, dataFrame):
+    PlayerRating = PlayerRating.strip()
     if len(PlayerRating) == 0:
         print('Please enter rating again')
         return
