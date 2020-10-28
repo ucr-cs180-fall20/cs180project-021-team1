@@ -31,8 +31,9 @@ class database:
         f2.close()
 
     def updateDB(self):
-        f = open(self.fifatxtPath, "a", encoding='utf-8')
-        print("Not implemented")
+        f = open(self.fifatxtPath, "w", encoding='utf-8')
+        f.write(self.df.to_csv(sep=';'))
+        f.close()
 
     def cleanCsv(self, rawList: list):
         dataList = []
@@ -40,6 +41,7 @@ class database:
             elems = line.split(sep=';')
             elems[8] = self.cleanCsvTeam(elems[8])
             dataList.append(elems)
+        dataList.pop(0)
         return dataList
 
     def cleanCsvTeam(self, teamString: str):
@@ -50,11 +52,22 @@ class database:
     def searchEntry(self):
         print("Not implemented")
 
-    def addEntry(self, ):
-        f = open(self.fifatxtPath, "a+", encoding='utf-8')
-        newEntry = player_id + ';' + name + ';' + nationality + ';' + position + ';' + overall + ';' + age + ';' + hits + ';' + potential + ';' + team + ' \n'
-        f.write(newEntry)
-        f.close()
+    def addEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
+        newEntry = [player_id, name, nationality, position, overall, age, hits, potential, team]
+        self.df.index = self.df.index + 1
+        self.df.loc[len(self.df) + 1] = newEntry
+        self.df = self.df.sort_index()
+        #tempDf = pd.DataFrame(newEntry, columns=['player_id', 'name', 'nationality', 'position','overall', 'age', 'hits', 'potential', 'team'])
+        print(newEntry)
+        print('\n\n\n')
+        print(self.df.index)
+        print('\n\n\n')
+        #print(tempDf)
+        #print('\n\n\n')
+        #self.df.append(tempDf, ignore_index=True)
+        print(self.df)
+        print('\n\n\n')
+        self.updateDB()
 
     def modifyEntry(self):
         print("Not implemented")
@@ -66,12 +79,12 @@ class database:
 # database testing
 db = database()
 
-teamStr = "\"FC Barcelona \""
-print(f"team is {teamStr}")
+#teamStr = "\"FC Barcelona \""
+#print(f"team is {teamStr}")
+#db.addEntry()
 
+db.addEntry("158023", "NEWGUY", "NEVERLAND", "ST|CF|RW", "94", "33", "299", "94", "FC Barcelona")
 
-#db.addEntry("158023", "Lionel Messi", "Argentina", "ST|CF|RW", "94", "33", "299", "94", "FC Barcelona")
-
-db.cleanCsvTeam(teamStr)
+#db.cleanCsvTeam(teamStr)
 
 
