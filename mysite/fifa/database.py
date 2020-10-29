@@ -7,7 +7,7 @@ class database:
     def __init__(self):
         self.fifacsvPath = '../../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
-        self.df = ''
+        self.df = pd.DataFrame()
         self.resetDB()
 
     def setDataFrame(self, dataList: str):
@@ -57,33 +57,40 @@ class database:
         self.df.index = self.df.index + 1
         self.df.loc[len(self.df) + 1] = newEntry
         self.df = self.df.sort_index()
-        #tempDf = pd.DataFrame(newEntry, columns=['player_id', 'name', 'nationality', 'position','overall', 'age', 'hits', 'potential', 'team'])
-        print(newEntry)
-        print('\n\n\n')
-        print(self.df.index)
-        print('\n\n\n')
-        #print(tempDf)
-        #print('\n\n\n')
-        #self.df.append(tempDf, ignore_index=True)
-        print(self.df)
-        print('\n\n\n')
+        # tempDf = pd.DataFrame(newEntry, columns=['player_id', 'name', 'nationality', 'position','overall', 'age', 'hits', 'potential', 'team'])
+        # print(newEntry)
+        # print('\n\n\n')
+        # print(self.df.index)
+        # print('\n\n\n')
+        # print(tempDf)
+        # print('\n\n\n')
+        # self.df.append(tempDf, ignore_index=True)
+        # print(self.df)
+        # print('\n\n\n')
         self.updateDB()
 
-    def modifyEntry(self):
+    def modifyEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
+        
         print("Not implemented")
 
-    def deleteEntry(self):
-        print("Not implemented")
+    def deleteEntry(self, entered_id: str):
+        id_column = 'player_id'
+        self.df = self.df.drop(index=self.df[self.df[id_column] == entered_id].index)
+        self.updateDB()
 
 
 # database testing
 db = database()
 
+db.deleteEntry("190871")
+
+
+
 #teamStr = "\"FC Barcelona \""
 #print(f"team is {teamStr}")
 #db.addEntry()
 
-db.addEntry("158023", "NEWGUY", "NEVERLAND", "ST|CF|RW", "94", "33", "299", "94", "FC Barcelona")
+# db.addEntry("158023", "NEWGUY", "NEVERLAND", "ST|CF|RW", "94", "33", "299", "94", "FC Barcelona")
 
 #db.cleanCsvTeam(teamStr)
 
