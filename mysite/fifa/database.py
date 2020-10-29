@@ -57,21 +57,20 @@ class database:
         self.df.index = self.df.index + 1
         self.df.loc[len(self.df) + 1] = newEntry
         self.df = self.df.sort_index()
-        # tempDf = pd.DataFrame(newEntry, columns=['player_id', 'name', 'nationality', 'position','overall', 'age', 'hits', 'potential', 'team'])
-        # print(newEntry)
-        # print('\n\n\n')
-        # print(self.df.index)
-        # print('\n\n\n')
-        # print(tempDf)
-        # print('\n\n\n')
-        # self.df.append(tempDf, ignore_index=True)
-        # print(self.df)
-        # print('\n\n\n')
         self.updateDB()
 
     def modifyEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
-        
-        print("Not implemented")
+        myIndex = self.df[self.df['player_id'] == player_id].index
+
+        self.df.at[myIndex, 'name'] = name
+        self.df.at[myIndex, 'nationality'] = nationality
+        self.df.at[myIndex, 'position'] = position
+        self.df.at[myIndex, 'overall'] = overall
+        self.df.at[myIndex, 'age'] = age
+        self.df.at[myIndex, 'hits'] = hits
+        self.df.at[myIndex, 'potential'] = potential
+
+        self.updateDB()
 
     def deleteEntry(self, entered_id: str):
         id_column = 'player_id'
@@ -82,16 +81,5 @@ class database:
 # database testing
 db = database()
 
-db.deleteEntry("190871")
-
-
-
-#teamStr = "\"FC Barcelona \""
-#print(f"team is {teamStr}")
-#db.addEntry()
-
-# db.addEntry("158023", "NEWGUY", "NEVERLAND", "ST|CF|RW", "94", "33", "299", "94", "FC Barcelona")
-
-#db.cleanCsvTeam(teamStr)
-
+db.modifyEntry("190871","Neymar Sr","xd","pos|ition","420","35","69","9999","SD Chargers")
 
