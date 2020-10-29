@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .soccerPlayer import df
+from .soccerPlayer import searchPlayerName,searchPlayerAge,searchPlayerRating,searchPlayerNationality,searchPlayerPosition,searchPlayerTeam
+
+playerName = None
+
+
 
 
 def index(request):
@@ -34,11 +39,15 @@ def ratings(request):
      return render(request, 'ratings.html')
 
 #NOTE: comment line 41, uncoment line 43 and 45 to see entire dataset
-def search(request):
 
-     # player_name=request.POST
-     # print(player_name)
-     return render(request, 'search.html')
+
+def search(request):
+     global playerName
+     playerName=request.GET
+
+
+
+     return render(request, 'search.html',playerName)
 
      #htmlPage = df.to_html()
      # return render(request, 'search.html')
@@ -46,3 +55,42 @@ def search(request):
 
 # def navbar(request):
 #      return render(request, 'navbar.html')
+
+def test(request):
+
+     print('\n\n\n')
+
+     for x in request.GET:
+          print(f'{x}: {request.GET[x]}')
+
+     print('\n\n\n')
+
+
+     searchstring=request.GET['SearchString']
+     searchstring=searchstring.strip()
+
+     attribute= request.GET['searchDrop']
+     print(attribute)
+
+     if(attribute=='player_name'):
+          htmlPage = searchPlayerName(searchstring, df).to_html()
+
+     if(attribute=='age'):
+          htmlPage = searchPlayerAge(searchstring, df).to_html()
+
+     if (attribute == 'nationality'):
+          htmlPage = searchPlayerNationality(searchstring, df).to_html()
+
+     if (attribute == 'club'):
+          htmlPage = searchPlayerTeam(searchstring, df).to_html()
+
+     if (attribute == 'rating'):
+          htmlPage = searchPlayerRating(searchstring, df).to_html()
+
+     if (attribute == 'position'):
+          htmlPage = searchPlayerPosition(searchstring, df).to_html()
+
+
+
+     return HttpResponse(htmlPage)
+     # return render(request, 'test.html')

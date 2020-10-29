@@ -10,6 +10,8 @@ urlpatterns = [
     path('homepage/map/', views.map, name='map'),
     path('homepage/ratings/', views.ratings, name='ratings'),
     path('homepage/search/', views.search, name='search'),
+    path('homepage/search/test/', views.test, name='test'),
+
     # path('navbar/',views.navbar, name='navbar'),
     #url(r'^homepage/', views.homepage),
 ]
