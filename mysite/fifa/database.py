@@ -17,16 +17,12 @@ class database:
 
     def resetDB(self):
         f1 = open(self.fifacsvPath, "r", encoding='utf-8')
-        f2 = open(self.fifatxtPath, "w+", encoding='utf-8') #"""here """
+        f2 = open(self.fifatxtPath, "w+", encoding='utf-8')
         cleanList = self.cleanCsv(f1)
         self.df = self.setDataFrame(cleanList)
 
-        #for line in f1: """here """
-        #    f2.write(line)
-        #print(self.df)
         csvString = self.df.to_csv(sep=';')
         f2.write(csvString)
-        #print(csvString)
         f1.close()
         f2.close()
 
@@ -45,8 +41,6 @@ class database:
         return dataList
 
     def cleanCsvTeam(self, teamString: str):
-        #"""remove quotations from team name string """
-        #print(f"Received: {teamString} \nreturning: ->{teamString[1:-2].strip()}<-")
         return teamString[1:-2].strip()
 
     def searchEntry(self):
@@ -81,5 +75,5 @@ class database:
 # database testing
 db = database()
 
-db.modifyEntry("190871","Neymar Sr","xd","pos|ition","420","35","69","9999","SD Chargers")
-
+# db.modifyEntry("190871","Neymar Sr","xd","pos|ition","420","35","69","9999","SD Chargers")
+db.resetDB()
