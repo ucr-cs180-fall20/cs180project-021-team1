@@ -19,10 +19,10 @@
 
     <div class="search">
         <div class="search_form_box">
-          <form method="POST">
+          <form action='test' method="GET">
             {% csrf_token %}
             <div class="search-grid">
-                <select id="dropdown">
+                <select id="dropdown" name="searchDrop">
                     <option value="player_name">Player Name:</option>
                     <option value="age">Age:</option>
                     <option value="nationality">Nationality:</option>
@@ -30,11 +30,9 @@
                     <option value="rating">Player Rating:</option>
                     <option value="position">Position:</option>
                 </select>
-                <from action = "" method ="POST">
-                     {% csrf_token %}
-                <input class="text-field" id="name"type="text" name="name" placeholder="Enter info!">
-                <button class="search-button">SUBMIT  <a href="{% url 'test' %}">Continue</a> </button>
-                    </from>
+                <input class="text-field" id="name"type="text" name="SearchString" placeholder="Enter info!">
+                <button class="search-button">SUBMIT  </button>
+
             </div>
           </form>
         </div>

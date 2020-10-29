@@ -2,6 +2,8 @@ import pandas as pd
 
 
 class SoccerPlayer:
+
+
     def __init__(self, player_id, name, nationality, position,
                  overall, age, hits, potential, team):
         self.player_id = player_id
@@ -13,6 +15,7 @@ class SoccerPlayer:
         self.hits = hits
         self.potential = potential
         self.team = team
+
 
     def __str__(self) -> str:
         return f"id: {self.player_id}, " \
@@ -65,7 +68,7 @@ def searchPlayerName(playerName:str, dataFrame):
             print(dataFrame)
 
     return dataFrame
-# searchPlayerName('',df)
+searchPlayerName('Lionel Messi ',df)
 
 
 def searchPlayerNationality(PlayerCountry:str, dataFrame):
