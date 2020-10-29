@@ -5,7 +5,7 @@ import pandas as pd
 class database:
 
     def __init__(self):
-        self.fifacsvPath = '../../FIFA-21Complete.csv'
+        self.fifacsvPath = '../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
         self.df = pd.DataFrame()
         self.resetDB()
@@ -48,10 +48,15 @@ class database:
 
     def addEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
         newEntry = [player_id, name, nationality, position, overall, age, hits, potential, team]
+        # print("self.df.index is: " + self.df.index)
+        # print("self.df len is: " + len(self.df))
         self.df.index = self.df.index + 1
         self.df.loc[len(self.df) + 1] = newEntry
         self.df = self.df.sort_index()
+        # print("self.df.index is: " + self.df.index)
+        # print("self.df len is: " + len(self.df))
         self.updateDB()
+        #TODO addentry cant add multiple new entries
 
     def modifyEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
         myIndex = self.df[self.df['player_id'] == player_id].index
@@ -73,7 +78,7 @@ class database:
 
 
 # database testing
-db = database()
+# db = database()
 
 # db.modifyEntry("190871","Neymar Sr","xd","pos|ition","420","35","69","9999","SD Chargers")
-db.resetDB()
+# db.resetDB()

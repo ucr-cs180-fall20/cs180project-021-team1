@@ -11,6 +11,8 @@ urlpatterns = [
     path('homepage/ratings/', views.ratings, name='ratings'),
     path('homepage/search/', views.search, name='search'),
     path('homepage/search/test/', views.test, name='test'),
+    path('homepage/search/listTest', views.listTest, name='listTest'),
+    path('homepage/add/addResult', views.addResult, name='addResult')
 
     # path('navbar/',views.navbar, name='navbar'),
     #url(r'^homepage/', views.homepage),
