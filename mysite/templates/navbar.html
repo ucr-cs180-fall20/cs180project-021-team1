@@ -1,17 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-      <div class="navbar">
-      <a href="#FIFA21" class="fifa21 nav-link">FIFA21</a>
-      <a href="{% url 'search' %}" class="nav-link">Search</a>
-      <a href="{% url 'map' %}" class="nav-link">Map</a>
-      <a href="{% url 'add' %}" class="nav-link">Add</a>
-      <a href="{% url 'ratings' %}" class="nav-link">Ratings</a>
-      </div>
-</body>
-</html>
+<div class="navbar">
+    <a href="{% url 'homepage' %}" class="fifa21 nav-link">FIFA21</a>
+    <a href="{% url 'search' %}" class="nav-link">Search</a>
+    <a href="{% url 'add' %}" class="nav-link">Add</a>
+    <a href="{% url 'analytics' %}" class="nav-link">Analytics</a>
+</div>

@@ -149,3 +149,5 @@ def searchPlayerRating(PlayerRating:str, dataFrame):
 
     return dataFrame
 
+# instead of http response, have a render and pass 2-d list of all filtered results
+# modify get search back, and get attributes back

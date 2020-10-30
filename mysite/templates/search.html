@@ -1,25 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <title> FIFA Database</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
-</head>
-
-<body>
-    <div class="navbar">
-	<a href="{% url 'homepage' %}" class="fifa21 nav-link">FIFA21</a>
-        <a href="{% url 'search' %}" class="nav-link">Search</a>
-        <a href="{% url 'map' %}" class="nav-link">Map</a>
-        <a href="{% url 'add' %}" class="nav-link">Add</a>
-        <a href="{% url 'ratings' %}" class="nav-link">Ratings</a>
-    </div>
-
-    <div class="search">
-        <div class="search_form_box">
-          <form action='test' method="GET">
+{% extends 'base.html' %}
+{% block content %}
+<div class="search">
+    <div class="search_form_box">
+        <form action='test' method="GET">
             {% csrf_token %}
             <div class="search-grid">
                 <select id="dropdown" name="searchDrop">
@@ -31,16 +14,11 @@
                     <option value="position">Position:</option>
                 </select>
 
-                <input class="text-field" id="name"type="text" name="SearchString" placeholder="Enter info!">
-                <button class="search-button">SUBMIT  </button>
+                <input class="text-field" id="name" type="text" name="SearchString" placeholder="Enter info!">
+                <button class="search-button">SUBMIT </button>
 
             </div>
-          </form>
-        </div>
+        </form>
     </div>
-
-
-
-</body>
-
-</html>
+</div>
+{% endblock %}
