@@ -47,9 +47,6 @@ class database:
     def cleanCsvTeam(self, teamString: str):
         return teamString[1:-2].strip()
 
-    def searchEntry(self):
-        print("Not implemented")
-
     def addEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
         self.playerList.append(tempPlayer)
@@ -76,6 +73,58 @@ class database:
                 break
         self.updateDB()
 
+    def searchEntry(self, attrType:str, searchStr:str):
+        if searchStr== '':
+            raise NotImplemented("ERROR: Passed in empty string to searchEntry()")
+        elif searchStr[0] == ' ' or searchStr[-1:] == ' ':
+            raise NotImplemented("ERROR: Too much whitespace passed to searchEntry()")
+
+        resultList = []
+        if attrType == 'player_name':
+            for player in self.playerList:
+                if searchStr.lower() in player.name.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        elif attrType == 'age':
+            for player in self.playerList:
+                if searchStr.lower() in player.age.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        elif attrType == 'nationality':
+            for player in self.playerList:
+                if searchStr.lower() in player.nationality.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        elif attrType == 'club':
+            for player in self.playerList:
+                if searchStr.lower() in player.team.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        elif attrType == 'rating':
+            for player in self.playerList:
+                if searchStr.lower() in player.overall.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        elif attrType == 'position':
+            for player in self.playerList:
+                if searchStr.lower() in player.position.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        elif attrType == 'potential':
+            for player in self.playerList:
+                if searchStr.lower() in player.potential.lower():
+                    resultList.append(player)
+                    print(f"Adding {player.name} to list")
+        else:
+            print("\n\nERROR: ATTRIBUTE NOT FOUND")
+
+
+        if len(resultList)==0:
+            print("No search results!")
+            print("Returning empty list...")
+        return resultList
+
+
 
 print("\n\nInitialize db")
 db = database()
@@ -90,8 +139,13 @@ print("\n")
 
 # db.deleteEntry('158023') # kill messi
 # db.deleteEntry('200389') # kill Jan Oblak
-db.modifyEntry("20801","eveveveveveve","USA","CDeezNuts","12","22","1","99","Patriots")
-db.modifyEntry("190871","jay leno","Korea","CB","122","212","551","9","lmao")
+# db.modifyEntry("20801","eveveveveveve","USA","CDeezNuts","12","22","1","99","Patriots")
+# db.modifyEntry("190871","jay leno","Korea","CB","122","212","551","9","lmao")
+#
+# for player in db.playerList[:5]:
+#     print(player)
 
-for player in db.playerList[:5]:
+myList = db.searchEntry('age','22')
+
+for player in myList:
     print(player)
