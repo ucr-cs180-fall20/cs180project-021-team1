@@ -3,11 +3,11 @@ from django.http import HttpResponse
 from django.template import loader
 from .soccerPlayer import df
 from .soccerPlayer import searchPlayerName,searchPlayerAge,searchPlayerRating,searchPlayerNationality,searchPlayerPosition,searchPlayerTeam
-from .database import database as fDB
+from .database import database
 import random
 
 
-
+db = database()
 playerName = None
 
 def index(request):
@@ -129,48 +129,32 @@ def listTest(request):
 
 
 def test(request):
+     for x in request.GET:
+          print(f'{x}: {request.GET[x]}')
 
 
-#      print('\n\n\n')
-
-#      for x in request.GET:
-#           print(f'{x}: {request.GET[x]}')
-
-#      print('\n\n\n')
 
 
-#      searchstring=request.GET['SearchString']
-#      searchstring=searchstring.strip()
 
-#      attribute= request.GET['searchDrop']
-#      print(attribute)
+
+     searchstring=request.GET['SearchString']
+     searchstring=searchstring.strip()
+
+     attribute= request.GET['searchDrop']
+     print(attribute)
+
+
 
 #      if(attribute=='player_name'):
 #           htmlPage = searchPlayerName(searchstring, df).to_html()
 
-#      if(attribute=='age'):
-#           htmlPage = searchPlayerAge(searchstring, df).to_html()
+#
+     lst=db.searchEntry(attribute,searchstring)
 
-#      if (attribute == 'nationality'):
-#           htmlPage = searchPlayerNationality(searchstring, df).to_html()
+     myDict={'result_list':lst}
 
-#      if (attribute == 'club'):
-#           htmlPage = searchPlayerTeam(searchstring, df).to_html()
-
-#      if (attribute == 'rating'):
-#           htmlPage = searchPlayerRating(searchstring, df).to_html()
-
-#      if (attribute == 'position'):
-#           htmlPage = searchPlayerPosition(searchstring, df).to_html()
-
-     print("\n\n")
-     print(htmlPage)
-     print("\n\n")
+     return render(request, 'test.html',myDict)
 
 
-#      return HttpResponse(htmlPage)
-#      # return render(request, 'test.html')
-
-     return HttpResponse(htmlPage)
      # return render(request, 'test.html',{'dfPage':htmlPage})
 

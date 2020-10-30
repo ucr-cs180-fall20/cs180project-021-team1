@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {{player_name}} was added!
+<ul>
+{% for player in result_list %}
+    <li>{{ player.player_id }}{{player.name}}{{player.nationality}}{{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}</li>
+{% endfor %}
+</ul>
 {% endblock %}
