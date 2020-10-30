@@ -19,7 +19,7 @@
 
     <div class="add">
         <div class="add_form_box">
-          <form method="POST">
+          <form action="addResult" method="GET">
             {% csrf_token %}
             <div class="add-grid">
                  <div class="add-gri-com">
@@ -74,11 +74,21 @@
                     <input class="text-field" id="playerPosition"type="text" name="position" placeholder="Enter player position!">
                 </div>
             </div>
+
+            <div class="add-grid">
+                 <div class="add-gri-com">
+                    <label value="potential">Potential:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="playerPotential"type="text" name="potential" placeholder="Enter Potential?!">
+                </div>
+            </div>
+
             <div class="add-button-spacing">
                 <center>
-                 <button class="add-button">ADD</button>
+                 <button type="submit" class="add-button">ADD</button>
              </center>
-
+            </div>
           </form>
         </div>
     </div>
