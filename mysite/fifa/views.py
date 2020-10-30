@@ -60,7 +60,6 @@ def search(request):
 # def test(request):
 
 def addResult(request):
-     db = fDB()
 
      print('\n\n\n')
      for x in request.GET:
@@ -78,8 +77,11 @@ def addResult(request):
      hits = "1"
 
      db.addEntry(rand_id,name,nationality,position,rating,age,hits,potential,club)
+     lst=db.searchEntry('player_id',rand_id)
+     myDict = {'result_list': lst}
+     myDict = {'result_list': lst}
 
-     return render(request,'test.html', {'player_name':name})
+     return render(request,'test.html', myDict)
 
 
 def listTest(request):
@@ -145,8 +147,7 @@ def test(request):
 
 
 
-#      if(attribute=='player_name'):
-#           htmlPage = searchPlayerName(searchstring, df).to_html()
+#
 
 #
      lst=db.searchEntry(attribute,searchstring)

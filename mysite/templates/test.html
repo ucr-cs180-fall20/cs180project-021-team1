@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {{player_name}} was added!
-<ul>
+<div class ="paper"><ul>
+
 {% for player in result_list %}
-    <li>{{ player.player_id }}{{player.name}}{{player.nationality}}{{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}</li>
+    <li>{{ player.player_id }} {{player.name}} {{player.nationality}} {{player.position}} {{player.overall}} {{player.age}} {{player.potential}} {{player.team}}</li>
 {% endfor %}
 </ul>
+    </div>
 {% endblock %}
