@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 {{player_name}} was added!
+
 <ul>
 {% for player in result_list %}
-    <li>{{ player.player_id }}{{player.name}}{{player.nationality}}{{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}</li>
+    <li>{{ player.player_id }}{{player.name}}{{player.nationality}}{{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}
+    </li>
+
+    <form action="delEntry" method="GET">
+        <button type="submit" name='player_id' value={{ player.player_id }}>Delete</button>
+    </form>
+
+<!--     <form action="delEntry" method="GET">-->
+<!--        <button type="submit" name='player_id' value={{ player.player_id }}>Modify</button>-->
+<!--    </form>-->
+
+
+<!--    <button>-->
+<!--        Modify-->
+<!--    </button>-->
+
 {% endfor %}
 </ul>
 {% endblock %}

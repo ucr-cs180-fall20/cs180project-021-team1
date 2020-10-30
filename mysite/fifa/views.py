@@ -33,34 +33,32 @@ def search(request):
      playerName=request.GET
      return render(request, 'search.html',playerName)
 
-# # def homepage(request):
-# #      playerName=request.POST # playerName is the variable saved once searched. Use this to search Database.
-# #      print(request.POST)
-# #      print(playerName)
-# #      return render(request, 'homepage.html')
-# #
-# def homepage(request):
-#      playerName = request.GET #playerName is the variable saved once searched. Use this to search Database.
-#      print(request.GET)
-#      print(playerName)
-#      print('Your request has been recieved ')
-#      return render(request, 'homepage.html')
+def modEntry(request):
+     print('\n\n\n')
+     for x in request.GET:
+          print(f'{x}: {request.GET[x]}')
+     print('\n\n\n')
+     print(request.GET)
 
-# def search(request):
-#      global playerName
-#      playerName=request.GET
-#      return render(request, 'search.html',playerName)
-
-#      #htmlPage = df.to_html()
-#      # return render(request, 'search.html')
-#      #return HttpResponse(htmlPage)
+     
 
 
+def delEntry(request):
 
-# def test(request):
+     print('\n\n\n')
+     for x in request.GET:
+          print(f'{x}: {request.GET[x]}')
+     print('\n\n\n')
+     print(request.GET)
+
+     id =  request.GET['player_id']
+     db.deleteEntry(id)
+
+     return render(request,'test.html')
+
+
 
 def addResult(request):
-     db = fDB()
 
      print('\n\n\n')
      for x in request.GET:
@@ -80,6 +78,8 @@ def addResult(request):
      db.addEntry(rand_id,name,nationality,position,rating,age,hits,potential,club)
 
      return render(request,'test.html', {'player_name':name})
+
+
 
 
 def listTest(request):
@@ -132,18 +132,11 @@ def test(request):
      for x in request.GET:
           print(f'{x}: {request.GET[x]}')
 
-
-
-
-
-
      searchstring=request.GET['SearchString']
      searchstring=searchstring.strip()
 
      attribute= request.GET['searchDrop']
      print(attribute)
-
-
 
 #      if(attribute=='player_name'):
 #           htmlPage = searchPlayerName(searchstring, df).to_html()
