@@ -28,6 +28,24 @@ class SoccerPlayer:
                f"potential: {self.potential}, " \
                f"team: {self.team}"
 
+    def toCsvString(self): #TODO test toCsvString function
+        return f"{self.player_id};{self.name};{self.nationality};{self.position};" \
+               f"{self.overall};{self.age};{self.hits};{self.potential};{self.team}\n"
+
+    def toArray(self):#TODO test toArray function
+        player = []
+        player.append(self.player_id)
+        player.append(self.name)
+        player.append(self.nationality)
+        player.append(self.position)
+        player.append(self.overall)
+        player.append(self.age)
+        player.append(self.hits)
+        player.append(self.potential)
+        player.append(self.team)
+
+        return player
+
 
 csvPath = r'../FIFA-21Complete.csv'
 
