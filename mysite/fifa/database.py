@@ -1,7 +1,7 @@
 # basic imports
 import pandas as pd
 import random
-from mysite.fifa.soccerPlayer import SoccerPlayer
+from fifa.soccerPlayer import SoccerPlayer
 
 class database:
 
