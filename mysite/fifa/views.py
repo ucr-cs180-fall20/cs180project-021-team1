@@ -114,7 +114,7 @@ def addResult(request):
 
      db.addEntry(rand_id,name,nationality,position,rating,age,hits,potential,club)
 
-     return render(request,'test.html', {'player_name':name})
+     return render(request,'test.html', {'response':'added'})
 
 
 
