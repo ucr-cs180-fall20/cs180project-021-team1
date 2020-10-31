@@ -21,7 +21,7 @@ urlpatterns = [
     path('homepage/search/listTest', views.listTest, name='listTest'),
     path('homepage/add/addResult', views.addResult, name='addResult'),
     path('homepage/search/test/delEntry', views.delEntry, name='delEntry'),
-    # path('homepage/search/test/modEntry', views.modEntry, name='modEntry'),
+    path('homepage/search/test/modEntry', views.modEntry, name='modEntry'),
     path('homepage/search/test/modify', views.modify, name='modify')
     # path('navbar/',views.navbar, name='navbar'),
     #url(r'^homepage/', views.homepage),

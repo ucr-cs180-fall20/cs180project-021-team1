@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .soccerPlayer import df
+from .soccerPlayer import SoccerPlayer
 from .soccerPlayer import searchPlayerName,searchPlayerAge,searchPlayerRating,searchPlayerNationality,searchPlayerPosition,searchPlayerTeam
 from .database import database
 import random
@@ -28,9 +28,29 @@ def ratings(request):
     return render(request, 'ratings.html',{})
 
 def modify(request):
-    modify_player=request.GET['modify_player']
     print(request.GET)
-    return render(request, 'modify.html')
+    id = request.GET['modify_player']
+    modify_player = db.searchEntry('player_id',id)[0]
+    print('\n')
+    print(modify_player)
+    print(modify_player.name)
+    print(type(modify_player))
+    # for atr in modify_player:
+    #     print(atr)
+    print('\n')
+
+    mydict = {'mod_id': modify_player.player_id,
+              'mod_name': modify_player.name,
+              'mod_nationality': modify_player.nationality,
+              'mod_position': modify_player.position,
+              'mod_overall': modify_player.overall,
+              'mod_age': modify_player.age,
+              'mod_hits': modify_player.hits,
+              'mod_potential': modify_player.potential,
+              'mod_team': modify_player.team}
+
+
+    return render(request, 'modify.html',mydict)
 
 
 def search(request):
@@ -45,6 +65,17 @@ def modEntry(request):
           print(f'{x}: {request.GET[x]}')
      print('\n\n\n')
      print(request.GET)
+     rand_hits = random.randrange(1,20)
+
+     db.modifyEntry(request.GET['player_id'],
+                    request.GET['name'],
+                    request.GET['nationality'],
+                    request.GET['position'],
+                    request.GET['rating'],
+                    request.GET['age'],
+                    str(rand_hits),
+                    request.GET['potential'],
+                    request.GET['club'],)
 
      return render(request, 'test.html')
 

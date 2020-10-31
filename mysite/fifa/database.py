@@ -117,8 +117,15 @@ class database:
                 if searchStr.lower() in player.potential.lower():
                     resultList.append(player)
                     # print(f"Adding {player.name} to list")
+        elif attrType == 'player_id':
+            for player in self.playerList:
+                if searchStr.lower() in player.player_id.lower():
+                    resultList.append(player)
+                    return resultList
+                    # print(f"Adding {player.name} to list")
         else:
             print("\n\nERROR: ATTRIBUTE NOT FOUND")
+            raise ValueError("ERROR: ATTRIBUTE NOT FOUND")
 
 
         if len(resultList)==0:
