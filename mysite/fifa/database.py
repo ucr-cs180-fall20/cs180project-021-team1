@@ -1,5 +1,4 @@
 # basic imports
-import pandas as pd
 import random
 
 from fifa.soccerPlayer import SoccerPlayer
