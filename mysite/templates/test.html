@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 {{player_name}} was added!
+<div class="form-spacing">
+<ul>
+{% for player in result_list %}
+    <li>{{ player.player_id }} {{player.name}} {{player.nationality}} {{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}
+    </li>
+
+    <form action="delEntry" method="GET">
+        <button type="submit" name='player_id' value={{ player.player_id }}>Delete</button>
+    </form>
+
+    <form method="GET" action="modify">
+        <button type="submit" name="modify_player" value={{player.player_id}} >Modify</button>
+    </form>
+
+{% endfor %}
+</ul>
+    </div>
 {% endblock %}
