@@ -27,11 +27,17 @@ def map(request):
 def ratings(request):
     return render(request, 'ratings.html',{})
 
+def modify(request):
+    modify_player=request.GET['modify_player']
+    print(request.GET)
+    return render(request, 'modify.html')
+
 
 def search(request):
      global playerName
      playerName=request.GET
      return render(request, 'search.html',playerName)
+
 
 def modEntry(request):
      print('\n\n\n')
@@ -40,7 +46,7 @@ def modEntry(request):
      print('\n\n\n')
      print(request.GET)
 
-     
+     return render(request, 'test.html')
 
 
 def delEntry(request):
