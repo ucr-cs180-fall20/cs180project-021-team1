@@ -3,19 +3,29 @@
 {{player_name}} was added!
 <div class="form-spacing">
 <ul>
-{% for player in result_list %}
+{% if result_list %}
+    {% for player in result_list %}
     <li>{{ player.player_id }} {{player.name}} {{player.nationality}} {{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}
     </li>
 
     <form action="delEntry" method="GET">
         <button type="submit" name='player_id' value={{ player.player_id }}>Delete</button>
     </form>
-
+<!--TODO stay on page after deletes-->
     <form method="GET" action="modify">
         <button type="submit" name="modify_player" value={{player.player_id}} >Modify</button>
     </form>
 
 {% endfor %}
+    {% elif response == "deleted"  %}
+        <h1>Player was deleted!</h1>
+    {% elif response == "modified"  %}
+        <h1>Player was modified!</h1>
+    {% else %}
+        <h1>Sorry, no players found :(</h1>
+{% endif %}
+<!--    TODO Add in button to return to search page-->
+
 </ul>
     </div>
 {% endblock %}

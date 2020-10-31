@@ -6,6 +6,7 @@ from .soccerPlayer import searchPlayerName,searchPlayerAge,searchPlayerRating,se
 from .database import database
 import random
 
+db = database(reset=True)
 
 db = database()
 playerName = None
@@ -77,7 +78,7 @@ def modEntry(request):
                     request.GET['potential'],
                     request.GET['club'],)
 
-     return render(request, 'test.html')
+     return render(request, 'test.html',{'response':'modified'})
 
 
 def delEntry(request):
@@ -91,12 +92,10 @@ def delEntry(request):
      id =  request.GET['player_id']
      db.deleteEntry(id)
 
-     return render(request,'test.html')
-
+     return render(request,'test.html',{'response':'deleted'})
 
 
 def addResult(request):
-
      print('\n\n\n')
      for x in request.GET:
           print(f'{x}: {request.GET[x]}')
