@@ -6,7 +6,8 @@ from .soccerPlayer import searchPlayerName,searchPlayerAge,searchPlayerRating,se
 from .database import database
 import random
 
-db = database(reset=True)
+#db = database(reset=True)
+db = database(reset=False)
 
 db = database()
 playerName = None
