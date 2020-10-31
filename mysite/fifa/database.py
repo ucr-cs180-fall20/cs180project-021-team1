@@ -1,15 +1,18 @@
 # basic imports
 import pandas as pd
 import random
-from fifa.soccerPlayer import SoccerPlayer
 
+from fifa.soccerPlayer import SoccerPlayer
 class database:
 
-    def __init__(self):
+    def __init__(self,reset=False):
         self.fifacsvPath = '../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []
-        self.resetDB()
+        if(reset):
+            self.resetDB()
+        else:
+            self.setTextFile()
 
 
     def setPlayerList(self, cleanList: list):
@@ -17,6 +20,13 @@ class database:
             tempPlayer = SoccerPlayer(player[0],player[1],player[2],player[3],player[4],
                                       player[5],player[6],player[7],player[8])
             self.playerList.append(tempPlayer)
+
+    def setTextFile(self):
+        txtFile = open(self.fifatxtPath, "r", encoding='utf-8')
+        cleanList = self.cleanTxt(txtFile.readlines())
+        self.setPlayerList(cleanList)
+        self.updateDB()
+        txtFile.close()
 
 
     def resetDB(self):
@@ -34,6 +44,16 @@ class database:
             txtFile.write(player.toCsvString())
 
         txtFile.close()
+
+    def cleanTxt(self, rawList: list):
+        dataList = []
+        for line in rawList:
+            if line=='\n':
+                continue
+            elems = line.split(sep=';')
+            dataList.append(elems)
+        return dataList
+
 
     def cleanCsv(self, rawList: list):
         dataList = []
