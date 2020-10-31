@@ -1,6 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+{% extends 'base.html' %}
+{% block content %}
+<div class="add">
+    <div class="add_form_box">
+        <form action="addResult" method="GET">
 
 <head>
     <meta charset="utf-8">
@@ -89,10 +91,4 @@
                 </div>
             </form>
         </div>
-    </div>
-
-
-
-</body>
-
-</html>
+{% endblock %}
