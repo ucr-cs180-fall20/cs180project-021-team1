@@ -1,4 +1,5 @@
 # basic imports
+from os import path
 import random
 
 from fifa.soccerPlayer import SoccerPlayer
@@ -21,6 +22,9 @@ class database:
             self.playerList.append(tempPlayer)
 
     def setTextFile(self):
+        if not path.exists(self.fifatxtPath):
+            self.resetDB()
+            return
         txtFile = open(self.fifatxtPath, "r", encoding='utf-8')
         cleanList = self.cleanTxt(txtFile.readlines())
         self.setPlayerList(cleanList)
