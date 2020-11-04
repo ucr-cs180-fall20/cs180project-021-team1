@@ -44,7 +44,7 @@ a:link {
 .button-grid {
   text-align: center;
   display: grid;
-  margin: auto;
+  /*margin: auto;*/
   height: 50%;
   padding-top: 300px;
   grid-template-columns: 100px;
