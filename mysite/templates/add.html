@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="add">
-    <div class="add_form_box">
+    <div class="form_box">
         <form action="addResult" method="GET">
 
             {% csrf_token %}
@@ -72,18 +72,14 @@
                         placeholder="Enter Potential?!">
 
                 </div>
-
-                <div class="add-button-spacing">
-                    <center>
-
-                        <button type="submit" class="add-button">ADD</button>
-                    </center>
-                </div>
             </div>
-        </form>
+            <div class="add-button-spacing">
+                <button type="submit" class="submit-button">ADD</button>
 
-        </center>
+            </div>
+
+
+        </form>
     </div>
-    </form>
 </div>
 {% endblock %}

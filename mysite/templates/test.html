@@ -1,33 +1,62 @@
 {% extends 'base.html' %}
 {% block content %}
-{{player_name}} was added!
 <div class="form-spacing">
-<ul>
-{% if result_list %}
-    {% for player in result_list %}
-    <li>{{ player.player_id }} {{player.name}} {{player.nationality}} {{player.position}}{{player.overall}}{{player.age}}{{player.potential}}{{player.team}}
-    </li>
+    <!-- {{player_name}} was added! -->
+    <div class="paper">
+        <div class="test-grid">
+            <div class="player-grid">
+                <div class="player">Player ID</div>
+                <div class="player">Name</div>
+                <div class="player">Nationality</div>
+                <div class="player">Position</div>
+                <div class="player">Rating</div>
+                <div class="player">Age</div>
+                <div class="player">Potential</div>
+                <div class="player">Team</div>
+            </div>
 
-    <form action="delEntry" method="GET">
-        <button type="submit" name='player_id' value={{ player.player_id }}>Delete</button>
-    </form>
-<!--TODO stay on page after deletes-->
-    <form method="GET" action="modify">
-        <button type="submit" name="modify_player" value={{player.player_id}} >Modify</button>
-    </form>
+            <div></div>
+            <div></div>
+        </div>
+        {% if result_list %}
+        {% for player in result_list %}
+        <div class="test-grid">
+            <div class="player-grid">
+                <div class="player">{{player.player_id}}</div>
+                <div class="player">{{player.name}}</div>
+                <div class="player">{{player.nationality}}</div>
+                <div class="player">{{player.position}} </div>
+                <div class="player">{{player.overall}}</div>
+                <div class="player">{{player.age}}</div>
+                <div class="player">{{player.potential}}</div>
+                <div class="player">{{player.team}}</div>
 
-{% endfor %}
-    {% elif response == "deleted"  %}
+            </div>
+            <div class="two-button-grid">
+                <form action="delEntry" method="GET">
+                    <button class="submit-button" type="submit" name='player_id'
+                        value={{ player.player_id }}>Delete</button>
+                </form>
+                <!--TODO stay on page after deletes-->
+                <form method="GET" action="modify">
+                    <button class="submit-button" type="submit" name="modify_player"
+                        value={{player.player_id}}>Modify</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% elif response == "deleted"  %}
         <h1>Player was deleted!</h1>
-    {% elif response == "modified"  %}
+        {% elif response == "modified"  %}
         <h1>Player was modified!</h1>
-    {% elif response == "added" %}
+        {% elif response == "added" %}
         <h1>Player was added!</h1>
-    {% else %}
+        {% else %}
         <h1>Sorry, no players found :(</h1>
-{% endif %}
-<!--    TODO Add in button to return to search page-->
+        {% endif %}
+        <!--    TODO Add in button to return to search page-->
 
-</ul>
     </div>
+</div>
 {% endblock %}
