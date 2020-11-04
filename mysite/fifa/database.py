@@ -159,10 +159,22 @@ class database:
             print(num)
         return resultList
 
+    def mostCommonAge(self):
+        age_counter = {}
+        for player in self.playerList:
+            if player.age.lower() in age_counter:
+                print(player.age.lower())
+                age_counter[player.age.lower()] += 1
+            else:
+                age_counter[player.age.lower()] = 1
+
+        popular_age = sorted(age_counter, key = age_counter.get, reverse = True)
+        top_3 = popular_age[:3]
+        return top_3
 
 
 # print("\n\nInitialize db")
-# db = database()
+db = database()
 # print("\n")
 
 # for player in db.playerList:
@@ -184,3 +196,5 @@ class database:
 #
 # for player in myList:
 #     print(player)
+
+print("here it is: ", db.mostCommonAge())
