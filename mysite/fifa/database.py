@@ -163,14 +163,29 @@ class database:
         age_counter = {}
         for player in self.playerList:
             if player.age.lower() in age_counter:
-                print(player.age.lower())
+                #print(player.age.lower())
                 age_counter[player.age.lower()] += 1
             else:
                 age_counter[player.age.lower()] = 1
 
         popular_age = sorted(age_counter, key = age_counter.get, reverse = True)
+        print("raw list: ", popular_age)
+        print("\n\n\n")
         top_3 = popular_age[:3]
         return top_3
+
+
+
+    def topAndLowestRated(self, top):
+        rating_list = {}
+        for player in self.playerList:
+            rating_list[player.name.lower()] = player.overall.lower()
+
+        if top:
+            top_rated = sorted(rating_list, key = rating_list.get, reverse = True)
+        else:
+            top_rated = sorted(rating_list, key = rating_list.get, reverse = False)
+        return top_rated
 
 
 # print("\n\nInitialize db")
@@ -198,3 +213,6 @@ db = database()
 #     print(player)
 
 print("here it is: ", db.mostCommonAge())
+print("\n\n\n")
+print("BEST AND WORST: ", db.topAndLowestRated(False))
+
