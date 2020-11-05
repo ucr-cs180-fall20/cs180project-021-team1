@@ -108,7 +108,7 @@ class database:
             for player in self.playerList:
                 if searchStr.lower() in player.name.lower():
                     resultList.append(player)
-                    print(f"Adding {player.name} to list")
+                    #print(f"Adding {player.name} to list")
 
         elif attrType == 'age':
             for player in self.playerList:
@@ -163,29 +163,28 @@ class database:
         age_counter = {}
         for player in self.playerList:
             if player.age.lower() in age_counter:
-                #print(player.age.lower())
                 age_counter[player.age.lower()] += 1
             else:
                 age_counter[player.age.lower()] = 1
 
         popular_age = sorted(age_counter, key = age_counter.get, reverse = True)
-        print("raw list: ", popular_age)
-        print("\n\n\n")
         top_3 = popular_age[:3]
-        return top_3
+        #print("HERE")
+        #print(top_3)
+        #age_list = sorted(self.playerList, key=lambda x:x.age==top_3[0], reverse = True)
+        #print(age_list)
+        for i in top_3:
+            self.searchEntry('age', i)
 
+    def topAndLowestRated(self, limit=100, top=True):
+        return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
 
+    def bestHits(self, limit=10, top=True):
+        return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
 
-    def topAndLowestRated(self, top):
-        rating_list = {}
-        for player in self.playerList:
-            rating_list[player.name.lower()] = player.overall.lower()
+    def teamAverageRating(self):
 
-        if top:
-            top_rated = sorted(rating_list, key = rating_list.get, reverse = True)
-        else:
-            top_rated = sorted(rating_list, key = rating_list.get, reverse = False)
-        return top_rated
+        return
 
 
 # print("\n\nInitialize db")
@@ -212,7 +211,18 @@ db = database()
 # for player in myList:
 #     print(player)
 
-print("here it is: ", db.mostCommonAge())
+print("here it is: ")
+db.mostCommonAge()
 print("\n\n\n")
-print("BEST AND WORST: ", db.topAndLowestRated(False))
+print("BEST AND WORST: ")
+#db.topAndLowestRated(True)
+
+
+
+#for player in db.topAndLowestRated():
+#    print(player)
+
+#print("BEST GOALAZOL")
+#for player in db.bestHits():
+#    print(player)
 

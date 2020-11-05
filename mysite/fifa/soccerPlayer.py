@@ -1,8 +1,4 @@
-
-
-
 class SoccerPlayer:
-
 
     def __init__(self, player_id, name, nationality, position,
                  overall, age, hits, potential, team):
