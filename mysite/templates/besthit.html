@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>calculate top 10 players with best hits here</h1>
+
+{% for player in result_list %}
+<br>
+{{player}}
+</br>
+{% endfor %}
+
+
 {% endblock %}

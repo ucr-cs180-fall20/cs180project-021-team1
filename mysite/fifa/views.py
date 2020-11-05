@@ -26,7 +26,7 @@ def map(request):
     return render(request, 'map.html',{})
 
 def ratings(request):
-    lst = db.topAndLowestRated(True)
+    lst = db.topAndLowestRated(100,True)
 
     myDict = {'result_list': lst}
 
@@ -39,7 +39,10 @@ def comAge(request):
     return render(request, 'comAge.html',myDict)
 
 def besthit(request):
-    return render(request, 'besthit.html',{})
+    lst = db.bestHits(10,True)
+
+    myDict = {'result_list': lst}
+    return render(request, 'besthit.html',myDict)
 
 def modify(request):
     print(request.GET)
