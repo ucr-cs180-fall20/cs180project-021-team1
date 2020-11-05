@@ -161,6 +161,7 @@ class database:
 
     def mostCommonAge(self):
         age_counter = {}
+        age_list = []
         for player in self.playerList:
             if player.age.lower() in age_counter:
                 age_counter[player.age.lower()] += 1
@@ -174,7 +175,9 @@ class database:
         #age_list = sorted(self.playerList, key=lambda x:x.age==top_3[0], reverse = True)
         #print(age_list)
         for i in top_3:
-            self.searchEntry('age', i)
+            age_list.append(self.searchEntry('age', i))
+
+        return age_list
 
     def topAndLowestRated(self, limit=100, top=True):
         return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
@@ -211,7 +214,7 @@ db = database()
 # for player in myList:
 #     print(player)
 
-print("here it is: ")
+print("here it is: " )
 db.mostCommonAge()
 print("\n\n\n")
 print("BEST AND WORST: ")
