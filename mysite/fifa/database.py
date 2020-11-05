@@ -217,7 +217,7 @@ db = database()
 #db.mostCommonAge()
 print("\n\n\n")
 print("BEST AND WORST: ")
-#db.topAndLowestRated(True)
+
 
 
 for player in db.mostCommonAge():
@@ -227,7 +227,11 @@ for player in db.mostCommonAge():
 #for player in db.topAndLowestRated():
 #    print(player)
 
-#print("BEST GOALAZOL")
-#for player in db.bestHits():
-#    print(player)
+
+# for player in db.topAndLowestRated():
+#     print(player)
+
+print("BEST GOALAZOL")
+for player in db.bestHits():
+    print(player)
 
