@@ -3,9 +3,11 @@
 <div class="form-spacing">
     <!-- {{player_name}} was added! -->
     <div class="paper">
+
+        {% if result_list %}
         <div class="test-grid">
             <div class="player-grid">
-                <div class="player">Player ID</div>
+                <div class="player">ID</div>
                 <div class="player">Name</div>
                 <div class="player">Nationality</div>
                 <div class="player">Position</div>
@@ -18,8 +20,8 @@
             <div></div>
             <div></div>
         </div>
-        {% if result_list %}
         {% for player in result_list %}
+        <i class="{{ country.flag_css }}"></i>
         <div class="test-grid">
             <div class="player-grid">
                 <div class="player">{{player.player_id}}</div>

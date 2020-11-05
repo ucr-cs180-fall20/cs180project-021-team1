@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="add">
-    <div class="form_box">
+    <div class="form-box">
         <form action="addResult" method="GET">
-
             {% csrf_token %}
             <div class="add-grid">
                 <div class="add-gri-com">
@@ -13,7 +12,6 @@
                     <input class="text-field" id="playerName" type="text" name="name" placeholder="Enter Player name!">
                 </div>
             </div>
-
             <div class="add-grid">
                 <div class="add-gri-com">
                     <label value="age">Age:</label>
@@ -22,7 +20,6 @@
                     <input class="text-field" id="playerAge" type="text" name="age" placeholder="Enter age!">
                 </div>
             </div>
-
             <div class="add-grid">
                 <div class="add-gri-com">
                     <label value="nationality">Nationality:</label>
@@ -32,7 +29,6 @@
                         placeholder="Enter nationality!">
                 </div>
             </div>
-
             <div class="add-grid">
                 <div class="add-gri-com">
                     <label value="club">Club:</label>
@@ -41,7 +37,6 @@
                     <input class="text-field" id="clubName" type="text" name="club" placeholder="Enter club name!">
                 </div>
             </div>
-
             <div class="add-grid">
                 <div class="add-gri-com">
                     <label value="rating">Player rating:</label>
@@ -51,7 +46,6 @@
                         placeholder="Enter player rating!">
                 </div>
             </div>
-
             <div class="add-grid">
                 <div class="add-gri-com">
                     <label value="position">Position:</label>
@@ -61,24 +55,18 @@
                         placeholder="Enter player position!">
                 </div>
             </div>
-
             <div class="add-grid">
-
                 <div class="add-gri-com">
                     <label value="potential">Potential:</label>
                 </div>
                 <div class="add-gri-com-2">
                     <input class="text-field" id="playerPotential" type="text" name="potential"
                         placeholder="Enter Potential?!">
-
                 </div>
             </div>
-            <div class="add-button-spacing">
+            <div class="button-spacing">
                 <button type="submit" class="submit-button">ADD</button>
-
             </div>
-
-
         </form>
     </div>
 </div>
