@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="search">
-    <div class="search_form_box">
+    <div class="form_box">
         <form action='test' method="GET">
             {% csrf_token %}
             <div class="search-grid">
@@ -15,7 +15,7 @@
                 </select>
 
                 <input class="text-field" id="name" type="text" name="SearchString" placeholder="Enter info!">
-                <button class="search-button">SUBMIT </button>
+                <button class="submit-button">SUBMIT </button>
 
             </div>
         </form>

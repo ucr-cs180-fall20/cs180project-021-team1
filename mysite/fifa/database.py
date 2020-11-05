@@ -1,10 +1,11 @@
 # basic imports
+from os import path
 import random
 
 from fifa.soccerPlayer import SoccerPlayer
 class database:
 
-    def __init__(self,reset=False):
+    def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []
@@ -21,6 +22,9 @@ class database:
             self.playerList.append(tempPlayer)
 
     def setTextFile(self):
+        if not path.exists(self.fifatxtPath):
+            self.resetDB()
+            return
         txtFile = open(self.fifatxtPath, "r", encoding='utf-8')
         cleanList = self.cleanTxt(txtFile.readlines())
         self.setPlayerList(cleanList)
@@ -104,7 +108,7 @@ class database:
             for player in self.playerList:
                 if searchStr.lower() in player.name.lower():
                     resultList.append(player)
-                    print(f"Adding {player.name} to list")
+                    #print(f"Adding {player.name} to list")
 
         elif attrType == 'age':
             for player in self.playerList:
@@ -155,10 +159,38 @@ class database:
             print(num)
         return resultList
 
+    def mostCommonAge(self):
+        age_counter = {}
+        age_list = []
+        for player in self.playerList:
+            if player.age.lower() in age_counter:
+                age_counter[player.age.lower()] += 1
+            else:
+                age_counter[player.age.lower()] = 1
+
+        popular_age = sorted(age_counter, key = age_counter.get, reverse = True)
+        top_3 = popular_age[:3]
+        #print("HERE")
+        #print(top_3)
+        #age_list = sorted(self.playerList, key=lambda x:x.age==top_3[0], reverse = True)
+        #print(age_list)
+        for i in top_3:
+            #age_list.append(self.searchEntry('age', i))
+            return (self.searchEntry('age', i))
+
+    def topAndLowestRated(self, limit=100, top=True):
+        return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
+
+    def bestHits(self, limit=10, top=True):
+        return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+
+    def teamAverageRating(self):
+
+        return
 
 
 # print("\n\nInitialize db")
-# db = database()
+db = database()
 # print("\n")
 
 # for player in db.playerList:
@@ -180,3 +212,22 @@ class database:
 #
 # for player in myList:
 #     print(player)
+
+#print("here it is: ", db.mostCommonAge())
+#db.mostCommonAge()
+print("\n\n\n")
+print("BEST AND WORST: ")
+#db.topAndLowestRated(True)
+
+
+for player in db.mostCommonAge():
+    print("HELOOOOOOO")
+    print(player)
+    print("HELOOOOOOO")
+#for player in db.topAndLowestRated():
+#    print(player)
+
+#print("BEST GOALAZOL")
+#for player in db.bestHits():
+#    print(player)
+
