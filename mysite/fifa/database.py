@@ -175,9 +175,8 @@ class database:
         #age_list = sorted(self.playerList, key=lambda x:x.age==top_3[0], reverse = True)
         #print(age_list)
         for i in top_3:
-            age_list.append(self.searchEntry('age', i))
-
-        return age_list
+            #age_list.append(self.searchEntry('age', i))
+            return (self.searchEntry('age', i))
 
     def topAndLowestRated(self, limit=100, top=True):
         return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
@@ -214,14 +213,17 @@ db = database()
 # for player in myList:
 #     print(player)
 
-print("here it is: " )
-db.mostCommonAge()
+#print("here it is: ", db.mostCommonAge())
+#db.mostCommonAge()
 print("\n\n\n")
 print("BEST AND WORST: ")
 #db.topAndLowestRated(True)
 
 
-
+for player in db.mostCommonAge():
+    print("HELOOOOOOO")
+    print(player)
+    print("HELOOOOOOO")
 #for player in db.topAndLowestRated():
 #    print(player)
 
