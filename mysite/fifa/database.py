@@ -5,7 +5,7 @@ import random
 from fifa.soccerPlayer import SoccerPlayer
 class database:
 
-    def __init__(self,reset=False):
+    def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []

@@ -28,6 +28,12 @@ def map(request):
 def ratings(request):
     return render(request, 'ratings.html',{})
 
+def comAge(request):
+    return render(request, 'comAge.html',{})
+
+def besthit(request):
+    return render(request, 'besthit.html',{})
+
 def modify(request):
     print(request.GET)
     id = request.GET['modify_player']
