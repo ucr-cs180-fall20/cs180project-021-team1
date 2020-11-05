@@ -19,7 +19,6 @@ urlpatterns = [
 
 
     path('homepage/search/test/', views.test, name='test'),
-    path('homepage/search/listTest', views.listTest, name='listTest'),
     path('homepage/add/addResult', views.addResult, name='addResult'),
     path('homepage/search/test/delEntry', views.delEntry, name='delEntry'),
     path('homepage/search/test/modEntry', views.modEntry, name='modEntry'),
