@@ -182,7 +182,7 @@ class database:
     def bestHits(self, limit=10, top=True):
         return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
 
-    def teamAverageRating(self):
+    def setTeamDict(self):
         dict1 = {}
         if bool(self.team_dict):
             dict1 = self.team_dict
@@ -193,6 +193,9 @@ class database:
                 else:
                     dict1[player.team].append(player)
             self.team_dict = dict1
+
+    def teamAverageRating(self,limit=10):
+        self.setTeamDict()
         team_list = []
         # [team name | num players | avg rating]
         for key in self.team_dict:
@@ -200,10 +203,10 @@ class database:
             num_players = len(self.team_dict[key])
             rating_total = 0
             for player in self.team_dict[key]:
-                rating_total+=int(player.overall)
+                rating_total += int(player.overall)
             avg = rating_total/num_players
-            team_list.append([team_name,num_players,round(avg,2)])
-        return team_list
+            team_list.append([team_name, num_players, round(avg,2)])
+        return sorted(team_list, key=lambda x: x[2], reverse=True)[:limit]
 
 # print("\n\nInitialize db")
 db = database(reset=False)
@@ -211,11 +214,10 @@ db = database(reset=False)
 #     print(player.team)
 
 teamList = db.teamAverageRating()
-# for player in teamList['FC Barcelona']:
-#     print(player)
 
 for team in teamList:
     print(team)
+
 # for team in db.teamAverageRating():
 #     if len(team) > 2:
 #         print(team)
