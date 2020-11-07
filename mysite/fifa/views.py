@@ -129,7 +129,8 @@ def addResult(request):
 
 
 def team_ratings(request):
-    return render(request,'teamRatings.html',{})
+    team_list = db.teamAverageRating()#TODO send dictionary with toy team class
+    return render(request,'teamRatings.html',{'team_list':team_list})
 
 
 def test(request):
