@@ -54,6 +54,7 @@ class database:
             if line=='\n':
                 continue
             elems = line.split(sep=';')
+            elems[8] = elems[8].strip()
             dataList.append(elems)
         return dataList
 
@@ -170,10 +171,6 @@ class database:
 
         popular_age = sorted(age_counter, key = age_counter.get, reverse = True)
         top_3 = popular_age[:3]
-        #print("HERE")
-        #print(top_3)
-        #age_list = sorted(self.playerList, key=lambda x:x.age==top_3[0], reverse = True)
-        #print(age_list)
         for i in top_3:
             #age_list.append(self.searchEntry('age', i))
             return (self.searchEntry('age', i))
@@ -185,12 +182,29 @@ class database:
         return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
 
     def teamAverageRating(self):
-
-        return
+        team_dict = {}
+        for player in self.playerList:
+            if not player.team in team_dict:
+                team_dict[player.team] = [player]
+            else:
+                team_dict[player.team].append(player)
+        return team_dict
 
 
 # print("\n\nInitialize db")
-db = database()
+db = database(reset=False)
+# for player in db.playerList:
+#     print(player.team)
+
+teamList = db.teamAverageRating()
+for player in teamList['FC Barcelona']:
+    print(player)
+# for team in db.teamAverageRating():
+#     if len(team) > 2:
+#         print(team)
+
+
+
 # print("\n")
 
 # for player in db.playerList:
@@ -215,15 +229,15 @@ db = database()
 
 #print("here it is: ", db.mostCommonAge())
 #db.mostCommonAge()
-print("\n\n\n")
-print("BEST AND WORST: ")
-#db.topAndLowestRated(True)
-
-
-for player in db.mostCommonAge():
-    print("HELOOOOOOO")
-    print(player)
-    print("HELOOOOOOO")
+# print("\n\n\n")
+# print("BEST AND WORST: ")
+# #db.topAndLowestRated(True)
+#
+#
+# for player in db.mostCommonAge():
+#     print("HELOOOOOOO")
+#     print(player)
+#     print("HELOOOOOOO")
 #for player in db.topAndLowestRated():
 #    print(player)
 
