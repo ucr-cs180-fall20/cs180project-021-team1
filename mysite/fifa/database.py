@@ -9,6 +9,7 @@ class database:
         self.fifacsvPath = '../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []
+        self.team_dict = {}
         if(reset):
             self.resetDB()
         else:
@@ -182,14 +183,27 @@ class database:
         return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
 
     def teamAverageRating(self):
-        team_dict = {}
-        for player in self.playerList:
-            if not player.team in team_dict:
-                team_dict[player.team] = [player]
-            else:
-                team_dict[player.team].append(player)
-        return team_dict
-
+        dict1 = {}
+        if bool(self.team_dict):
+            dict1 = self.team_dict
+        else:
+            for player in self.playerList:
+                if not player.team in dict1:
+                    dict1[player.team] = [player]
+                else:
+                    dict1[player.team].append(player)
+            self.team_dict = dict1
+        team_list = []
+        # [team name | num players | avg rating]
+        for key in self.team_dict:
+            team_name = key
+            num_players = len(self.team_dict[key])
+            rating_total = 0
+            for player in self.team_dict[key]:
+                rating_total+=int(player.overall)
+            avg = rating_total/num_players
+            team_list.append([team_name,num_players,round(avg,2)])
+        return team_list
 
 # print("\n\nInitialize db")
 db = database(reset=False)
@@ -197,8 +211,11 @@ db = database(reset=False)
 #     print(player.team)
 
 teamList = db.teamAverageRating()
-for player in teamList['FC Barcelona']:
-    print(player)
+# for player in teamList['FC Barcelona']:
+#     print(player)
+
+for team in teamList:
+    print(team)
 # for team in db.teamAverageRating():
 #     if len(team) > 2:
 #         print(team)
