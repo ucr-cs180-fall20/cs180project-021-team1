@@ -24,11 +24,11 @@ class SoccerPlayer:
                f"potential: {self.potential}, " \
                f"team: {self.team}"
 
-    def toCsvString(self): #TODO test toCsvString function
+    def toCsvString(self):
         return f"{self.player_id};{self.name};{self.nationality};{self.position};" \
                f"{self.overall};{self.age};{self.hits};{self.potential};{self.team}\n"
 
-    def toArray(self):#TODO test toArray function
+    def toArray(self):
         player = []
         player.append(self.player_id)
         player.append(self.name)
