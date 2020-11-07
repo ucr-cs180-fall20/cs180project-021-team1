@@ -128,6 +128,10 @@ def addResult(request):
      return render(request,'test.html', {'response':'added'})
 
 
+def team_ratings(request):
+    return render(request,'teamRatings.html',{})
+
+
 def test(request):
      for x in request.GET:
           print(f'{x}: {request.GET[x]}')
