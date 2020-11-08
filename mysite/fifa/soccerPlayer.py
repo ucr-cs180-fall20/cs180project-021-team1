@@ -1,5 +1,4 @@
 class SoccerPlayer:
-
     def __init__(self, player_id, name, nationality, position,
                  overall, age, hits, potential, team):
         self.player_id = player_id
@@ -42,10 +41,18 @@ class SoccerPlayer:
 
         return player
 
+#TODO create team class
+class SoccerTeam:
 
+    def __init__(self, teamname:str, numplayers:int, ratingaverage:float):
+        self.teamname = teamname
+        self.numplayers = numplayers
+        self.ratingaverage = ratingaverage
 
-
-
+    def __str__(self) -> str:
+        return f"teamname: {self.teamname}, " \
+               f"numplayers: {self.numplayers}, " \
+               f"ratingaverage: {self.ratingaverage}"
 
 # instead of http response, have a render and pass 2-d list of all filtered results
 # modify get search back, and get attributes back
