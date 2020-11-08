@@ -2,7 +2,7 @@
 from os import path
 import random
 
-from fifa.soccerPlayer import SoccerPlayer
+from fifa.soccerPlayer import SoccerPlayer, SoccerTeam
 class database:
 
     def __init__(self,reset=True):
@@ -205,8 +205,8 @@ class database:
             for player in self.team_dict[key]:
                 rating_total += int(player.overall)
             avg = rating_total/num_players
-            team_list.append([team_name, num_players, round(avg,2)])
-        return sorted(team_list, key=lambda x: x[2], reverse=True)[:limit]
+            team_list.append(SoccerTeam(team_name, num_players, round(avg,2)))
+        return sorted(team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]# TODO convert into list of team objects
 
 # print("\n\nInitialize db")
 db = database(reset=False)
