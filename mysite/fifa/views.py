@@ -5,11 +5,7 @@ from .soccerPlayer import SoccerPlayer
 from .database import database
 import random
 
-#db = database(reset=True)
 db = database(reset=False)
-
-db = database()
-playerName = None
 
 def index(request):
     return HttpResponse("Hello, world. This is fifa app.")
@@ -130,6 +126,11 @@ def addResult(request):
      db.addEntry(rand_id,name,nationality,position,rating,age,hits,potential,club)
 
      return render(request,'test.html', {'response':'added'})
+
+
+def team_ratings(request):
+    team_list = db.teamAverageRating()#TODO send dictionary with toy team class
+    return render(request,'teamRatings.html',{'team_list':team_list})
 
 
 def test(request):

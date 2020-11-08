@@ -2,13 +2,14 @@
 from os import path
 import random
 
-from fifa.soccerPlayer import SoccerPlayer
+from fifa.soccerPlayer import SoccerPlayer, SoccerTeam
 class database:
 
     def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []
+        self.team_dict = {}
         if(reset):
             self.resetDB()
         else:
@@ -54,6 +55,7 @@ class database:
             if line=='\n':
                 continue
             elems = line.split(sep=';')
+            elems[8] = elems[8].strip()
             dataList.append(elems)
         return dataList
 
@@ -170,10 +172,6 @@ class database:
 
         popular_age = sorted(age_counter, key = age_counter.get, reverse = True)
         top_3 = popular_age[:3]
-        #print("HERE")
-        #print(top_3)
-        #age_list = sorted(self.playerList, key=lambda x:x.age==top_3[0], reverse = True)
-        #print(age_list)
         for i in top_3:
             #age_list.append(self.searchEntry('age', i))
             return (self.searchEntry('age', i))
@@ -184,13 +182,48 @@ class database:
     def bestHits(self, limit=10, top=True):
         return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
 
-    def teamAverageRating(self):
+    def setTeamDict(self):
+        dict1 = {}
+        if bool(self.team_dict):
+            dict1 = self.team_dict
+        else:
+            for player in self.playerList:
+                if not player.team in dict1:
+                    dict1[player.team] = [player]
+                else:
+                    dict1[player.team].append(player)
+            self.team_dict = dict1
 
-        return
-
+    def teamAverageRating(self,limit=10):
+        self.setTeamDict()
+        team_list = []
+        # [team name | num players | avg rating]
+        for key in self.team_dict:
+            team_name = key
+            num_players = len(self.team_dict[key])
+            rating_total = 0
+            for player in self.team_dict[key]:
+                rating_total += int(player.overall)
+            avg = rating_total/num_players
+            team_list.append(SoccerTeam(team_name, num_players, round(avg,2)))
+        return sorted(team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]# TODO convert into list of team objects
 
 # print("\n\nInitialize db")
-db = database()
+db = database(reset=False)
+# for player in db.playerList:
+#     print(player.team)
+
+teamList = db.teamAverageRating()
+
+for team in teamList:
+    print(team)
+
+# for team in db.teamAverageRating():
+#     if len(team) > 2:
+#         print(team)
+
+
+
 # print("\n")
 
 # for player in db.playerList:
@@ -215,15 +248,15 @@ db = database()
 
 #print("here it is: ", db.mostCommonAge())
 #db.mostCommonAge()
-print("\n\n\n")
-print("BEST AND WORST: ")
-#db.topAndLowestRated(True)
-
-
-for player in db.mostCommonAge():
-    print("HELOOOOOOO")
-    print(player)
-    print("HELOOOOOOO")
+# print("\n\n\n")
+# print("BEST AND WORST: ")
+# #db.topAndLowestRated(True)
+#
+#
+# for player in db.mostCommonAge():
+#     print("HELOOOOOOO")
+#     print(player)
+#     print("HELOOOOOOO")
 #for player in db.topAndLowestRated():
 #    print(player)
 

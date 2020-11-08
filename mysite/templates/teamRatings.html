@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Top 10 rated Teams</h1>
+
+{% for team in team_list %}
+
+        <br>
+                team name: {{team.teamname}}, team avg: {{team.ratingaverage}}, number of players: {{team.numplayers}}
+        </br>
+
+{% endfor %}
+
+{% endblock %}
