@@ -5,6 +5,7 @@ from .soccerPlayer import SoccerPlayer
 from .database import database
 import random
 
+# db = database(reset=True)
 db = database(reset=False)
 
 def index(request):
