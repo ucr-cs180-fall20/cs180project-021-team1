@@ -54,5 +54,21 @@ class SoccerTeam:
                f"numplayers: {self.numplayers}, " \
                f"ratingaverage: {self.ratingaverage}"
 
+
+class Map:
+
+    def __init__(self, playername:str, playerrating:int, playernationality:float,coordinates:float):
+        self.playername = playername
+        self.playerrating = playerrating
+        self.playernationality = playernationality
+        self.coordinates=coordinates
+
+
+    def __str__(self) -> str:
+        return f"playername: {self.playername}, " \
+               f"playerrating: {self.playerrating}, " \
+               f"playernationality: {self.playernationality}," \
+               f"coordinates: {self.coordinates}"
+
 # instead of http response, have a render and pass 2-d list of all filtered results
 # modify get search back, and get attributes back
