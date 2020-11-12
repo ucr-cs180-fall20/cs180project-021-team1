@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from django_countries.fields import CountryField
+# from django_countries.fields import CountryField
 from .soccerPlayer import SoccerPlayer
 from .database import database
 import random
