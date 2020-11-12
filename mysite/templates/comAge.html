@@ -1,12 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>most common age are</h1>
+
+<div class="form-spacing">
+    <h1>most common age are</h1>
+    <div class="paper">
+        <div class="player-grid">
+            <div class="player">ID</div>
+            <div class="player">Name</div>
+            <div class="player">Nationality</div>
+            <div class="player">Position</div>
+            <div class="player">Rating</div>
+            <div class="player">Age</div>
+            <div class="player">Potential</div>
+            <div class="player">Team</div>
+        </div>
+        <script>numbers();</script>
+        {% for player in result_list %}
+
+        <div class="player-grid">
+            <div class="player">{{player.player_id}}</div>
+            <div class="player">{{player.name}}</div>
+            <div class="player"> <i class="{{ player.nationality.country.flag_css }}"></i></div>
+            <div class="player">{{player.position}} </div>
+            <div class="player">{{player.overall}}</div>
+            <div class="player">{{player.age}}</div>
+            <div class="player">{{player.potential}}</div>
+            <div class="player">{{player.team}}</div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 
-{% for player in result_list %}
-<br>
-{{player}}
-</br>
-{% endfor %}
 
 {% endblock %}
