@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Top 10 rated Teams</h1>
 
-{% for team in team_list %}
+<div class="form-spacing">
+        <h1>Top 10 rated Teams</h1>
+        <div class="paper">
+                <div class="rating-grid">
+                        <div class="rating">Team Name</div>
+                        <div class="rating">Average Rating</div>
+                        <div class="rating">Number of Players</div>
 
-        <br>
-                team name: {{team.teamname}}, team avg: {{team.ratingaverage}}, number of players: {{team.numplayers}}
-        </br>
-
-{% endfor %}
-
+                </div>
+                {% for team in team_list %}
+                <div class="rating-grid">
+                        <div class="rating">{{team.teamname}}</div>
+                        <div class="rating">{{team.ratingaverage}}</div>
+                        <div class="rating">{{team.numplayers}}</div>
+                </div>
+                {% endfor %}
+        </div>
+</div>
 {% endblock %}
