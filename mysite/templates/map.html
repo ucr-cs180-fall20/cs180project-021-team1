@@ -3,6 +3,7 @@
     <head>
     <meta charset='utf-8' />
     <title></title>
+    <body>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
@@ -55,6 +56,8 @@ var map = new mapboxgl.Map({
 
 var geojson = {
   type: 'FeatureCollection',
+
+
   features: [{
     type: 'Feature',
     geometry: {
@@ -70,7 +73,7 @@ var geojson = {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [-122.414, 37.776]
+      coordinates: [-38.4192641 -63.5989206]
     },
     properties: {
       title: 'Mapbox',
@@ -93,7 +96,7 @@ geojson.features.forEach(function(marker) {
     .addTo(map);
 });
 </script>
-
+</body>
 </body>
 {% endblock %}
 

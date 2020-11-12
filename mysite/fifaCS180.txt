@@ -1,4 +1,5 @@
 158023;Lionel Messi;Argentina;ST|CF|RW;94;33;299;94;FC Barcelona
+20801;Cristiano Ronaldo;Portugal;ST|LW;93;35;276;93;Juventus
 190871;Neymar Jr;Brazil;CAM|LW;92;28;186;92;Paris Saint-Germain
 203376;Virgil van Dijk;Netherlands;CB;91;29;127;92;Liverpool
 200389;Jan Oblak;Slovenia;GK;91;27;47;93;Atlético Madrid
