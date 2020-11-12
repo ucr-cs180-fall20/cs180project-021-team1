@@ -19,13 +19,10 @@ def add(request):
 
 def analytics(request):
     return render(request, 'analytics.html',{})
+
 def map(request):
-
     lst=db.Map(10,True)
-
     myDict = {'result_list': lst}
-
-
     return render(request, 'map.html',myDict)
 
 def ratings(request):

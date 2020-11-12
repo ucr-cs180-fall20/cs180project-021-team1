@@ -229,7 +229,7 @@ class database:
                 countryCordinates = [-57.62506485,-30.21628761]
 
             if (player_country == 'Netherlands'):
-                countryCordinates = [-9.03482628, 41.88056945999999]
+                countryCordinates = [6.07421017,53.51039886]
 
             if (player_country == 'Slovenia'):
                 countryCordinates = [13.80648041,46.50928879000001]
@@ -243,15 +243,10 @@ class database:
             if (player_country == 'Egypt'):
                 countryCordinates = [34.92259979,29.501329420000015]
 
-
-
-
             team_list.append(Map(player_name,player_rating,player_country,countryCordinates))
 
-
-
-
         return team_list
+
 # print("\n\nInitialize db")
 db = database(reset=False)
 # for player in db.playerList:

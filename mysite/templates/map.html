@@ -20,7 +20,8 @@
         bottom: 0;
         width: 100%;
       }
-      .marker {
+
+.marker {
   background-image: url(/static/images/mapbox-icon.png);
   background-size: cover;
   width: 50px;
@@ -28,6 +29,7 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
 .mapboxgl-popup {
   max-width: 200px;
 }
@@ -35,6 +37,7 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+  color: black;
 }
 
     </style>
@@ -56,8 +59,6 @@ var map = new mapboxgl.Map({
 
 var geojson = {
   type: 'FeatureCollection',
-
-
   features: [{
     type: 'Feature',
     geometry: {
@@ -73,14 +74,103 @@ var geojson = {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [-38.4192641 -63.5989206]
+      coordinates: [-122.414, 37.776]
     },
     properties: {
       title: 'Mapbox',
       description: 'San Francisco, California'
     }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-66.95987701,-54.89677048000001]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Argentina'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-9.03482628,41.88056945999999]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Portugal'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-57.62506485,-30.21628761]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Brazil'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [6.07421017,53.51039886]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Netherlands'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [13.80648041,46.50928879000001]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Slovenia'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [3.3149499899999997,51.34577941999997]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Belgium'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [15.01696968,51.106681820000006]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Poland'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [34.92259979,29.501329420000015]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Egypt'
+    }
   }]
 };
+
 
 geojson.features.forEach(function(marker) {
 
