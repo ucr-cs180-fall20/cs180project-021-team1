@@ -3,6 +3,10 @@ let button;
 
 function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
+    //  if (window.open()){
+    //      rotateX(millis() / 1000);
+    //      rotateY(millis() / 1000);
+    // }
 }
 
 function draw() {
@@ -14,9 +18,8 @@ function draw() {
     background(0, 24, 4);
     stroke('rgb(169, 253, 34)');
     strokeWeight(3);
-    rotateX(35);
-    // rotateY(millis() / 1000);
-    box(3 * windowWidth / 4, 3 * windowHeight / 4, 100);
+
+    box(3 * windowWidth / 4, 3 * windowHeight / 4, 0);
     circle(0, 0, 3 * windowHeight / 16);
     line(0, -3 * windowHeight / 8, 0, 3 * windowHeight / 8);
 
@@ -35,4 +38,6 @@ function draw() {
 
 
     noFill();
+
+
 }

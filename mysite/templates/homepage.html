@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+
+{% load static %}
+<script type="text/javascript" src="{% static 'field.js' %}"></script>
+
 <div class="canvas">
     <script src="field.js"></script>
     <div id="button-grid" class="button-grid">
-        <a href="{% url 'search' %}" class="button-link">Search</a>
-        <a href="{% url 'add' %}" class="button-link">Add</a>
-        <a href="{% url 'analytics' %}" class="button-link">Analytics</a>
+        <a href="{% url 'search' %}" class="button-link button1" >Search</a>
+        <a href="{% url 'add' %}" class="button-link button2">Add</a>
+        <a href="{% url 'analytics' %}" class="button-link button3">Analytics</a>
     </div>
 </div>
+
 
 
 

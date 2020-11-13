@@ -45,7 +45,10 @@ div {
 }
 .button-grid {
   position: absolute;
-  top: 100;
+  /*top: 100;*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   display: grid;
   height: 50%;
@@ -55,7 +58,9 @@ div {
   grid-template-rows: repeat(3,1fr);
   justify-content: center;
 
+
 }
+
 
 .button-link, .submit-button{
   border: 1px solid rgb(169, 253, 34);
