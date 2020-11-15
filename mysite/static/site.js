@@ -1,4 +1,3 @@
-
 // const form = document.getElementById('form');
 // const playerName_input = document.getElementById('playerName').value;
 
@@ -46,4 +45,3 @@ function checkValid() {
       // alert('Please input only alphabet characters only.');
       // playerName_input.focus();
       //       return false;
-

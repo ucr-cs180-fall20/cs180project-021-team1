@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+# from django_countries.fields import CountryField
 from .soccerPlayer import SoccerPlayer
 from .database import database
 import random
 
 # db = database(reset=True)
-db = database(reset=False)
+db = database(reset=True)
 
 def index(request):
     return HttpResponse("Hello, world. This is fifa app.")
@@ -19,8 +20,11 @@ def add(request):
 
 def analytics(request):
     return render(request, 'analytics.html',{})
+
 def map(request):
-    return render(request, 'map.html',{})
+    lst=db.Map(10,True)
+    myDict = {'result_list': lst}
+    return render(request, 'map.html',myDict)
 
 def ratings(request):
     lst = db.topAndLowestRated(100,True)
@@ -156,4 +160,3 @@ def test(request):
 
 
      # return render(request, 'test.html',{'dfPage':htmlPage})
-
