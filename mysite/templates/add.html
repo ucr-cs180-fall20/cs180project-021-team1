@@ -2,7 +2,7 @@
 {% block content %}
 <div class="add">
     <div class="form-box">
-        <form action="addResult" method="GET" id="form" onsubmit="evt.preventDefault(); return checkValid();">
+        <form action="addResult" method="GET" id="addForm" onsubmit="return checkValid();">
             {% csrf_token %}
             <div class="add-grid">
                 <div class="add-gri-com">
@@ -10,7 +10,7 @@
                 </div>
                 <div class="add-gri-com-2">
                     <input class="text-field" id="playerName" type="text" name="name" placeholder="Enter Player name!"
-                            required>
+                        required>
                 </div>
             </div>
             <div class="add-grid">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="add-gri-com-2">
                     <input class="text-field" id="playerAge" type="text" name="age" placeholder="Enter age!"
-                           pattern="[0-9]{1,2}" title="Please input a valid age." required>
+                        pattern="[0-9]{1,2}" title="Please input a valid age." required>
                 </div>
             </div>
             <div class="add-grid">
@@ -28,8 +28,7 @@
                 </div>
                 <div class="add-gri-com-2">
                     <input class="text-field" id="nationality" type="text" name="nationality"
-                        placeholder="Enter nationality!"
-                           required>
+                        placeholder="Enter nationality!" required>
                 </div>
             </div>
             <div class="add-grid">
@@ -38,7 +37,7 @@
                 </div>
                 <div class="add-gri-com-2">
                     <input class="text-field" id="clubName" type="text" name="club" placeholder="Enter club name!"
-                           required>
+                        required>
                 </div>
             </div>
             <div class="add-grid">
@@ -70,9 +69,9 @@
             </div>
             <div class="button-spacing">
 
-<!--                <script>test();</script>-->
+                <!--                <script>test();</script>-->
                 <button type="submit" class="submit-button">ADD</button>
-<!--                <script>test();</script>-->
+                <!--                <script>test();</script>-->
 
             </div>
         </form>

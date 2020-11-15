@@ -11,26 +11,27 @@
 //     window.history.back();
 // }
 
-function checkValid(e) {
-      e.preventDefault();
-      const playerName_input = document.getElementById('playerName').value;
-
-      var letterOnly = /^[a-zA-z]+$/;
+function checkValid() {
+      // e.preventDefault();
+      // var playerName_input = document.getElementById('playerName').value;
+      var x = document.forms["addForm"]["playerName"].value;
+      var letterOnly = /^[a-zA-Z]+$/;
       var numberonly = /^[0-9]+$/;
       var bothNumLet = /^[0-9a-zA-Z]+$/;
       var positionOnly = /^[A-Za-z]+$/;
 
       // if (playerName_input == letterOnly){
       // if (playerName_input.match(letterOnly)) {
-      if (letterOnly.test(playerName_input)== false) {
+      if (letterOnly.test(x) == false) {
+            console.log("here!!!!!!");
             window.alert('Please input only alphabet characters only.');
-            playerName_input.focus();
+            document.getElementById('playerName').focus();
             // e.preventDefault();
             return false;
       }
       // alert('Your name have accepted : you can try another')
-            console.log("hello world");
-            return true;
+      console.log("hello world");
+      return true;
 }
 //
 // $(function() {
