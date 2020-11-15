@@ -130,8 +130,8 @@ def addResult(request):
 
      db.addEntry(rand_id,name,nationality,position,rating,age,hits,potential,club)
 
-     return render(request,'test.html', {'response':'added'})
-
+     # return render(request,'test.html', {'response':'added'})
+     return HttpResponse()
 
 def team_ratings(request):
     team_list = db.teamAverageRating()#TODO send dictionary with toy team class
