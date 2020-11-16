@@ -20,7 +20,7 @@ function checkValid() {
       var ratingValue = document.forms["addForm"]["playerRating"].value;
       var positionValue = document.forms["addForm"]["playerPosition"].value;
       var potentialValue = document.forms["addForm"]["playerPotential"].value;
-      var idValue = document.forms["addForm"]["playerId"].value;
+      // var idValue = document.forms["addForm"]["playerId"].value;
 
       var letterOnly = /^[a-zA-Z\s]+$/;
       var numberOnly = /^[0-9]+$/;
@@ -35,7 +35,7 @@ function checkValid() {
             document.getElementById('playerName').focus();
             return false;
       }
-      if (numberOnly.test(ageValue) == false || ageValue < 1 || ageValue >99) {
+      if (numberOnly.test(ageValue) == false || ageValue < 1 || ageValue > 99) {
             console.log(" age test is working ");
             console.log("age value is : " + ageValue);
             window.alert('Please input a vaild age between 1 to 99');
@@ -54,7 +54,7 @@ function checkValid() {
             document.getElementById('clubName').focus();
             return false;
       }
-      if (numberOnly.test(ratingValue) == false || ratingValue < 1 || ratingValue >99) {
+      if (numberOnly.test(ratingValue) == false || ratingValue < 1 || ratingValue > 99) {
             console.log(" rating test is working ");
             console.log("age value is : " + ratingValue);
             window.alert('Please input a vaild rating between 1 to 99');
@@ -67,16 +67,16 @@ function checkValid() {
             document.getElementById('playerPosition').focus();
             return false;
       }
-      if (numberOnly.test(potentialValue) == false || potentialValue < 1 || potentialValue >99) {
+      if (numberOnly.test(potentialValue) == false || potentialValue < 1 || potentialValue > 99) {
             console.log(" potential test is working ");
-            console.log("potential value is : " + potentialValuealue);
+            console.log("potential value is : " + potentialValue);
             window.alert('Please input a vaild potential rating between 1 to 99');
             document.getElementById('playerPotential').focus();
             return false;
       }
       if (numberOnly.test(idValue) == false) {
             console.log(" id test is working ");
-            console.log("id value is : " + potentialValuealue);
+            console.log("id value is : " + idValue);
             window.alert('Please input digit numbers only');
             document.getElementById('playerId').focus();
             return false;

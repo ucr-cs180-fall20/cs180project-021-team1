@@ -37,6 +37,7 @@ div {
  .button-link:hover, .submit-button:hover, .nav-link:hover{
   color: black;
   background-color: rgb(169, 253, 34);
+  cursor: url(/static/images/Soccer_Ball_Cursor.png),auto;
 }
 
 .canvas {
@@ -66,6 +67,7 @@ div {
   padding-bottom: 10px;
   border-radius: 50%;
   color: white;
+  cursor: url(/static/images/Soccer_Ball_Cursor.png),auto;
 }
 
 .button-spacing{
@@ -108,6 +110,7 @@ div {
   border-radius: 5px;
   height: 35px;
   text-align: center;
+  cursor: url(/static/images/Soccer_Ball_Cursor.png),auto;
 }
 
 .add-grid{
