@@ -15,6 +15,46 @@ a:link {
 div {
   font-size: 14px;
 }
+.topnav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.topnav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.topnav a:hover {
+  color: black;
+  background-color: rgb(169, 253, 34);
+}
+
+.topnav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .topnav {padding-top: 15px;}
+  .topnav a {font-size: 18px;}
+}
+
 .navbar {
   display: table;
   background-color: black;
@@ -69,7 +109,7 @@ div {
   padding-right: 20px;
   padding-top: 14px;
   padding-bottom: 10px;
-  border-radius: 50%;
+  border-radius: 5px;
   color: white;
 }
 

@@ -1,6 +1,15 @@
-<div class="navbar">
+<span style="font-size:30px;cursor:pointer" onclick="openNav();">&#9776;</span>
+
+<div id="mySidenav" class="topnav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
     <a href="{% url 'homepage' %}" class="fifa21 nav-link">FIFA21</a>
+    <h3>Features</h3>
     <a href="{% url 'search' %}" class="nav-link">Search</a>
     <a href="{% url 'add' %}" class="nav-link">Add</a>
-    <a href="{% url 'analytics' %}" class="nav-link">Analytics</a>
+    <h3>Analytics</h3>
+    <a href="{% url 'map' %}" class="button-link">Map</a>
+    <a href="{% url 'ratings' %}" class="button-link">Ratings</a>
+    <a href="{% url 'comAge' %}" class="button-link">Most Common Age</a>
+    <a href="{% url 'besthit' %}" class="button-link">Top 10 with best hits</a>
+    <a href="{% url 'teamratings' %}" class="button-link">Top 10 teams</a>
 </div>
