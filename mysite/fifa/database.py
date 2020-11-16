@@ -2,7 +2,10 @@
 from os import path
 import random
 
-from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map
+from collections import Counter
+
+
+from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 class database:
 
     def __init__(self,reset=True):
@@ -10,6 +13,7 @@ class database:
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []
         self.team_dict = {}
+        self.nation_dict={}
         if(reset):
             self.resetDB()
         else:
@@ -194,6 +198,18 @@ class database:
                     dict1[player.team].append(player)
             self.team_dict = dict1
 
+    def setNationDict(self):
+        dict2 = {}
+        if bool(self.nation_dict):
+            dict2 = self.nation_dict
+        else:
+            for player in self.playerList:
+                if not player.nationality in dict2:
+                    dict2[player.nationality] = [player]
+                else:
+                    dict2[player.nationality].append(player)
+            self.nation_dict = dict2
+
     def teamAverageRating(self,limit=10):
         self.setTeamDict()
         team_list = []
@@ -247,16 +263,42 @@ class database:
 
         return team_list
 
-# print("\n\nInitialize db")
+    def PopularNation(self, limit=10, top=True):
+
+        self.setNationDict()
+        nation = []
+
+        for player in self.nation_dict:
+            nationname=player
+            num_players = len(self.nation_dict[player])
+            nation.append(Nation(nationname,num_players))
+        return sorted(nation, key=lambda x:x.numplayers, reverse=top)[:limit]
+
+        # for player in self.playerList:
+        #     player_nationality=player.nationality
+        #     num_players = len(self.team_dict[player])
+        #
+        #     if player_nationality not in unique:
+        #         unique.append(player_nationality)
+        #
+        # for player in unique:
+        #     temp=player
+        #     nation.append(Nation(temp))
+        #
+        # return nation
+
+
+
+
 db = database(reset=False)
 # for player in db.playerList:
 #     print(player.team)
-
+#
 # teamList = db.teamAverageRating()
 #
 # for team in teamList:
 #     print(team)
-#
+
 # for team in db.teamAverageRating():
 #     if len(team) > 2:
 #         print(team)
@@ -299,7 +341,12 @@ db = database(reset=False)
 # for player in db.topAndLowestRated():
 #     print(player)
 
-print("BEST GOALAZOL")
-for player in db.Map():
+# print("BEST GOALAZOL")
+# for player in db.Map():
+#     print(player)
+# #
+
+team_list= db.PopularNation()
+for player in db.PopularNation():
     print(player)
 
