@@ -247,6 +247,22 @@ class database:
 
         return team_list
 
+    def jsonData(self):
+        jsonList = []
+        for player in self.playerList:
+           newJson = {
+                   "playerName": player.name,
+                   "age": player.age,
+                   "nationality": player.nationality,
+                   "club": player.team,
+                   "rating": player.overall,
+                   "position": player.position,
+                   "potential": player.potential
+                   }
+           jsonList.append(newJson)
+        return jsonList
+
+
 # print("\n\nInitialize db")
 db = database(reset=False)
 # for player in db.playerList:
@@ -302,4 +318,7 @@ db = database(reset=False)
 print("BEST GOALAZOL")
 for player in db.Map():
     print(player)
+
+
+print(db.jsonData())
 
