@@ -50,7 +50,7 @@ function checkValid() {
       }
       if (positionOnly.test(positionValue) == false) {
             console.log("position test is working!!!!!!");
-            window.alert('Please input alphabet characters only for position and add " | " for multiple positions.');
+            window.alert('Please input alphabet characters only for position and add " | " for multiple positions without spaces.');
             document.getElementById('playerPosition').focus();
             return false;
       }
