@@ -13,8 +13,7 @@ function checkValid() {
       var letterOnly = /^[a-zA-Z\s]+$/;
       var numberOnly = /^[0-9]+$/;
       var bothlet = /^[0-9a-zA-Z\s]+$/;
-      var positionOnly = /^[A-Za-z|]+$/;
-      // console.log("age value length is : " + ageValue.length);
+      var positionOnly = /^[A-Za-z|\s]+$/;
 
       if (letterOnly.test(playerValue) == false) {
             console.log("player name test is working!!!!!!");
@@ -50,7 +49,7 @@ function checkValid() {
       }
       if (positionOnly.test(positionValue) == false) {
             console.log("position test is working!!!!!!");
-            window.alert('Please input alphabet characters only for position and add " | " for multiple positions without spaces.');
+            window.alert('Please input a valid position and add " | " for multiple positions without spaces');
             document.getElementById('playerPosition').focus();
             return false;
       }
@@ -79,7 +78,7 @@ function searchValid() {
       var letterOnly = /^[a-zA-Z\s]+$/;
       var numberOnly = /^[0-9]+$/;
       var bothlet = /^[0-9a-zA-Z\s]+$/;
-      var positionOnly = /^[A-Za-z|]+$/;
+      var positionOnly = /^[A-Za-z|\s]+$/;
 
       // var checkDropdown = document.getElementById("dropdown").value;
       var checkDropdown = document.forms["searchForm"]["dropdown"].value;
@@ -127,7 +126,7 @@ function searchValid() {
       if (checkDropdown == "position" && positionOnly.test(inputValue) == false){
             // letterOnly.test(inputValue) == false
             console.log("position test is working!!!!!!");
-            window.alert('Please input alphabet characters only for position and add " | " for multiple positions without spaces.');
+            window.alert('Please input a valid position and add " | " for multiple positions without spaces');
             // document.getElementById('playerName').focus();
             return false;
       }
