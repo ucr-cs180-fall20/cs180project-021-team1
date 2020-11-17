@@ -2,14 +2,14 @@
 {% block content %}
 <div class="add">
     <div class="form-box">
-        <form action="modEntry" method="GET">
+        <form action="modEntry" method="GET" id="addForm" onsubmit="return checkValid();">
             {% csrf_token %}
             <div class="add-grid">
                 <div class="add-gri-com">
                     <label value="player_id">Player ID:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="playerId" type="text" name="player_id" value={{mod_id}}>
+                    <input class="text-field" id="playerId" type="text" name="player_id" value={{mod_id}} required>
                 </div>
             </div>
             <div class="add-grid">
@@ -17,7 +17,7 @@
                     <label value="player_name">Player Name:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="playerName" type="text" name="name" value="{{mod_name}}">
+                    <input class="text-field" id="playerName" type="text" name="name" value="{{mod_name}}" required>
                 </div>
             </div>
             <div class="add-grid">
@@ -25,7 +25,7 @@
                     <label value="age">Age:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="playerAge" type="text" name="age" value={{mod_age}}>
+                    <input class="text-field" id="playerAge" type="text" name="age" value={{mod_age}} required>
                 </div>
             </div>
             <div class="add-grid">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="add-gri-com-2">
                     <input class="text-field" id="nationality" type="text" name="nationality"
-                        value="{{mod_nationality}}">
+                        value="{{mod_nationality}}" required>
                 </div>
             </div>
             <div class="add-grid">
@@ -42,7 +42,7 @@
                     <label value="club">Club:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="clubName" type="text" name="club" value="{{mod_team}}">
+                    <input class="text-field" id="clubName" type="text" name="club" value="{{mod_team}}" required>
                 </div>
             </div>
             <div class="add-grid">
@@ -50,7 +50,7 @@
                     <label value="rating">Player rating:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="playerRating" type="text" name="rating" value={{mod_overall}}>
+                    <input class="text-field" id="playerRating" type="text" name="rating" value={{mod_overall}} required>
                 </div>
             </div>
             <div class="add-grid">
@@ -58,7 +58,7 @@
                     <label value="position">Position:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="playerPosition" type="text" name="position" value={{mod_position}}>
+                    <input class="text-field" id="playerPosition" type="text" name="position" value="{{mod_position}}" required>
                 </div>
             </div>
             <div class="add-grid">
@@ -66,7 +66,7 @@
                     <label value="potential">Potential:</label>
                 </div>
                 <div class="add-gri-com-2">
-                    <input class="text-field" id="playerPotential" type="text" name="potential" value={{mod_potential}}>
+                    <input class="text-field" id="playerPotential" type="text" name="potential" value={{mod_potential}} required>
                 </div>
             </div>
             <div class="button-spacing">
