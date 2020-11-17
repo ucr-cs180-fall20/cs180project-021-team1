@@ -130,8 +130,7 @@ function searchValid() {
             // document.getElementById('playerName').focus();
             return false;
       }
-
-
+      
 
       console.log("hello world");
       return true;
