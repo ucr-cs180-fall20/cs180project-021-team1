@@ -7,7 +7,7 @@ from .database import database
 import random
 
 # db = database(reset=True)
-db = database(reset=False)
+db = database(reset=True)
 
 def index(request):
     return HttpResponse("Hello, world. This is fifa app.")
@@ -20,8 +20,11 @@ def add(request):
 
 def analytics(request):
     return render(request, 'analytics.html',{})
+
 def map(request):
-    return render(request, 'map.html',{})
+    lst=db.Map(10,True)
+    myDict = {'result_list': lst}
+    return render(request, 'map.html',myDict)
 
 def ratings(request):
     lst = db.topAndLowestRated(100,True)
@@ -41,6 +44,12 @@ def besthit(request):
 
     myDict = {'result_list': lst}
     return render(request, 'besthit.html',myDict)
+
+def mostPopularNation(request):
+    lst = db.PopularNation()
+
+    myDict = {'result_list': lst}
+    return render(request, 'mostPopularNation.html',myDict)
 
 def modify(request):
     print(request.GET)
@@ -128,7 +137,7 @@ def addResult(request):
      db.addEntry(rand_id,name,nationality,position,rating,age,hits,potential,club)
 
      return render(request,'test.html', {'response':'added'})
-
+     # return HttpResponse()
 
 def team_ratings(request):
     team_list = db.teamAverageRating()#TODO send dictionary with toy team class
@@ -154,6 +163,6 @@ def test(request):
      myDict={'result_list':lst}
 
      return render(request, 'test.html',myDict)
-
+     # return HttpResponse()
 
      # return render(request, 'test.html',{'dfPage':htmlPage})

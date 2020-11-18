@@ -1,4 +1,187 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>put map stuff here</h1>
+    <head>
+    <meta charset='utf-8' />
+    <title></title>
+    <body>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      #map {
+        position: absolute;
+        top: 73px;
+        bottom: 0;
+        width: 100%;
+      }
+
+.marker {
+  background-image: url(/static/images/Soccerplayer-png.png);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+}
+
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibXVzdGFmYW1hbnlhIiwiYSI6ImNraGU5cTN3MjAxYzEzOW9lYnNpZ29uc2MifQ.pje_ZeEKk2y3QQqywQh7hg';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v10',
+  center: [-96, 37.8],
+  zoom: 3
+});
+
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-77.032, 38.913]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Washington, D.C.'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.414, 37.776]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'San Francisco, California'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-66.95987701,-54.89677048000001]
+    },
+    properties: {
+      title: 'Lionel Messi',
+      description: 'Argentina'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-9.03482628,41.88056945999999]
+    },
+    properties: {
+      title: 'Cristiano Ronaldo',
+      description: 'Portugal'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-57.62506485,-30.21628761]
+    },
+    properties: {
+      title: 'Neymar Jr',
+      description: 'Brazil'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [6.07421017,53.51039886]
+    },
+    properties: {
+      title: 'Virgil Van Dijk',
+      description: 'Netherlands'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [13.80648041,46.50928879000001]
+    },
+    properties: {
+      title: 'Jan Oblak',
+      description: 'Slovenia'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [3.3149499899999997,51.34577941999997]
+    },
+    properties: {
+      title: 'Kevin De Bruyne',
+      description: 'Belgium'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [15.01696968,51.106681820000006]
+    },
+    properties: {
+      title: 'Robert Lewandowski',
+      description: 'Poland'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [34.92259979,29.501329420000015]
+    },
+    properties: {
+      title: 'Mohamed Salah',
+      description: 'Egypt'
+    }
+  }]
+};
+
+
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+    .addTo(map);
+});
+</script>
+</body>
+</body>
 {% endblock %}
+
