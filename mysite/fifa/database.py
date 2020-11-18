@@ -1,6 +1,7 @@
 # basic imports
 from os import path
 import random
+import time
 
 from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map
 class database:
@@ -85,9 +86,9 @@ class database:
 
         for i in range(len(self.playerList)):
             if player_id == self.playerList[i].player_id:
-                print(f"\nChanging player: {self.playerList[i]}\n")
+                # print(f"\nChanging player: {self.playerList[i]}\n")
                 self.playerList[i] = tempPlayer
-                print(f"\nModified player is: {self.playerList[i]}\n")
+                # print(f"\nModified player is: {self.playerList[i]}\n")
                 break
 
         self.updateDB()
@@ -96,7 +97,7 @@ class database:
         for player in self.playerList:
             if entered_id == player.player_id:
                 self.playerList.remove(player)
-                print(f"Removed player: {player}")
+                # print(f"Removed player: {player}")
                 break
         self.updateDB()
 
@@ -159,8 +160,8 @@ class database:
             print("No search results!")
             print("Returning empty list...")
 
-        for num in resultList:
-            print(num)
+        # for num in resultList:
+        #     print(num)
         return resultList
 
     def mostCommonAge(self):
@@ -250,7 +251,7 @@ class database:
         return team_list
 
 # print("\n\nInitialize db")
-db = database(reset=False)
+db = database(reset=True)
 # for player in db.playerList:
 #     print(player.team)
 
@@ -301,7 +302,15 @@ db = database(reset=False)
 # for player in db.topAndLowestRated():
 #     print(player)
 
-print("BEST GOALAZOL")
-for player in db.Map():
-    print(player)
+# print("BEST GOALAZOL")
+# for player in db.Map():
+#     print(player)
 
+
+# t0 = time.time()
+# print(f"t0 is {t0}")
+# print("Running db update")
+# db.updateDB()
+# t1 = time.time()
+# print(f"t1 is {t1}")
+# print(f"elapsed time is: {t1-t0}")
