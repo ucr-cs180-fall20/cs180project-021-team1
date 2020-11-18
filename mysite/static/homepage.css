@@ -18,7 +18,7 @@ div {
 .topnav {
   height: 100%;
   width: 0;
-  position: fixed;
+  position: absolute;
   z-index: 2;
   top: 0;
   left: 0;
@@ -49,12 +49,20 @@ div {
   font-size: 36px;
   margin-left: 50px;
 }
-
+.topnav {
+  -webkit-transform: translate3d(0, -131px, 0);
+  -moz-transform: translate3d(0, -131px, 0);
+  -o-transform: translate3d(0, -131px, 0);
+  transform: translate3d(0, -131px, 0);
+  -webkit-transition:-webkit-transform 0.25s linear;
+  -moz-transition:-moz-transform 0.25s linear;
+  -o-transition:-o-transform 0.25s linear;
+  transition:transform 0.25s linear;
+}
 @media screen and (max-height: 450px) {
   .topnav {padding-top: 15px;}
   .topnav a {font-size: 18px;}
 }
-
 .navbar {
   display: table;
   background-color: black;
@@ -74,35 +82,55 @@ div {
   padding-bottom: 10px;
   font-size: 30px;
 }
- .button-link:hover, .submit-button:hover, .nav-link:hover{
+.submit-button:hover, .nav-link:hover{
   color: black;
   background-color: rgb(169, 253, 34);
 }
-
 .canvas {
   position: relative;
   display: block;
 }
 .button-grid {
   position: absolute;
-  /*top: 100;*/
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   display: grid;
   height: 50%;
-  padding-top: 300px;
-  grid-template-columns: 100px;
-  grid-row-gap: 20px;
-  grid-template-rows: repeat(3,1fr);
+  padding-top: 46%;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(7,1fr);
+  grid-auto-flow: column;
   justify-content: center;
+}
 
+.button-container {
+  color: white;
+  position: relative;
+  text-align: center;
+}
+.button-link {
+  color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.button-link:hover {
+  border: 3px solid rgb(169, 253, 34);
 
+}
+.soccerball-text {
+  color: rgb(169, 253, 34);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 100;
 }
 
 
-.button-link, .submit-button{
+ .submit-button{
   border: 1px solid rgb(169, 253, 34);
   background-color: transparent;
   padding-left: 20px;
