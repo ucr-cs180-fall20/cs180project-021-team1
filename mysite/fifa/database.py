@@ -76,7 +76,9 @@ class database:
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
         self.playerList.append(tempPlayer)
 
-        self.updateDB()
+        txtfile = open(self.fifatxtPath, "a", encoding='utf-8')
+        txtfile.writelines([tempPlayer.toCsvString()])
+        txtfile.close()
 
     def modifyEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
