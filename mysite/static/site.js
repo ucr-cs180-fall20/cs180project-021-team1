@@ -8,7 +8,6 @@ function checkValid() {
       var ratingValue = document.forms["addForm"]["playerRating"].value;
       var positionValue = document.forms["addForm"]["playerPosition"].value;
       var potentialValue = document.forms["addForm"]["playerPotential"].value;
-      var idValue = document.forms["addForm"]["playerId"].value;
 
       var letterOnly = /^[a-zA-Z\s]+$/;
       var numberOnly = /^[0-9]+$/;
@@ -60,14 +59,6 @@ function checkValid() {
             document.getElementById('playerPotential').focus();
             return false;
       }
-      if (numberOnly.test(idValue) == false) {
-            console.log(" id test is working ");
-            console.log("id value is : " + idValue);
-            window.alert('Please input digit numbers only');
-            document.getElementById('playerId').focus();
-            return false;
-      }
-
 
       console.log("hello world");
       return true;
