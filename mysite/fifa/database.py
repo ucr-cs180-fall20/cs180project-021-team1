@@ -1,6 +1,7 @@
 # basic imports
 from os import path
 import random
+from geopy.geocoders import Nominatim
 
 from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map
 class database:
@@ -249,18 +250,30 @@ class database:
 
     def jsonData(self):
         jsonList = []
+        locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList:
-           newJson = {
-                   "playerName": player.name,
-                   "age": player.age,
-                   "nationality": player.nationality,
-                   "club": player.team,
-                   "rating": player.overall,
-                   "position": player.position,
-                   "potential": player.potential
-                   }
-           jsonList.append(newJson)
+            location = locator.geocode(player.nationality)
+            newJson = {
+                  "type": 'Feature',
+                  "geometry": {
+                      "type": 'Point',
+                      "coordinates": [location.latitude, location.longitude]
+                  },
+                  "properties": {
+                      "title": player.name,
+                      "description": player.nationality
+                  }
+                  }
+            jsonList.append(newJson)
         return jsonList
+
+    def testGeo(self):
+        locator = Nominatim(user_agent="myGeocoder")
+        for player in self.playerList:
+            location = locator.geocode(player.nationality)
+            #location = locator.geocode("South Korea")
+            print("player nationality: \n", player.nationality)
+            print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
 
 
 # print("\n\nInitialize db")
@@ -319,6 +332,6 @@ print("BEST GOALAZOL")
 for player in db.Map():
     print(player)
 
+#db.testGeo()
 
-print(db.jsonData())
 
