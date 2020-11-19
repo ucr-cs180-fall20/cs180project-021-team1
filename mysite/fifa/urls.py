@@ -8,16 +8,13 @@ urlpatterns = [
     path('homepage/', views.homepage, name='homepage'),
     path('homepage/add/', views.add, name='add'),
     path('homepage/search/', views.search, name='search'),
+    path('homepage/map', views.map, name='map'),
 
-
-    path('homepage/analytics/', views.analytics, name='analytics'),
-    path('homepage/analytics/map', views.map, name='map'),
-
-    path('homepage/analytics/ratings/', views.ratings, name='ratings'),
-    path('homepage/analytics/ratings2/', views.ratings2, name='ratings2'),
-    path('homepage/analytics/comAge/', views.comAge, name='comAge'),
-    path('homepage/analytics/besthit/', views.besthit, name='besthit'),
-    path('homepage/analytics/teamRatings/', views.team_ratings, name='teamratings'),
+    path('homepage/ratings/', views.ratings, name='ratings'),
+    path('homepage/ratings2/', views.ratings2, name='ratings2'),
+    path('homepage/comAge/', views.comAge, name='comAge'),
+    path('homepage/besthit/', views.besthit, name='besthit'),
+    path('homepage/teamRatings/', views.team_ratings, name='teamratings'),
 
 
     path('homepage/search/test/', views.test, name='test'),

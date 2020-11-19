@@ -54,6 +54,12 @@ def besthit(request):
     myDict = {'result_list': lst}
     return render(request, 'besthit.html',myDict)
 
+def mostPopularNation(request):
+    lst = db.PopularNation()
+
+    myDict = {'result_list': lst}
+    return render(request, 'mostPopularNation.html',myDict)
+
 def modify(request):
     print(request.GET)
     id = request.GET['modify_player']
