@@ -126,3 +126,11 @@ function searchValid() {
       console.log("hello world");
       return true;
 }
+
+// $(document).ready(function () {
+//    $("#lowRated").hide();
+//    $('#toggle_switch').on('click',function(){
+//      $("#topRated").toggle("#lowRated");
+//      $("#lowRated").toggle();
+//    });
+// });

@@ -14,6 +14,7 @@ urlpatterns = [
     path('homepage/analytics/map', views.map, name='map'),
 
     path('homepage/analytics/ratings/', views.ratings, name='ratings'),
+    path('homepage/analytics/ratings2/', views.ratings2, name='ratings2'),
     path('homepage/analytics/comAge/', views.comAge, name='comAge'),
     path('homepage/analytics/besthit/', views.besthit, name='besthit'),
     path('homepage/analytics/teamRatings/', views.team_ratings, name='teamratings'),

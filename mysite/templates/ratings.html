@@ -2,8 +2,17 @@
 {% block content %}
 
 <div class="form-spacing">
-    <h1>Top 100 rated players</h1>
-    <div class="paper">
+<!--    <button id="toggle_switch" class="switch" onclick="{% url 'ratings2' %}">Top/Low-->
+<!--&lt;!&ndash;        <input type="button"  name="toggle">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span class="slider round"></span>&ndash;&gt;-->
+<!--    </button>-->
+    <button type="button">
+        <a href="{% url 'ratings2' %}">Top/Low</a>
+    </button>
+
+    <div id="topRated">
+        <h1>Top 100 rated players</h1>
+        <div class="paper">
         <div class="player-grid">
             <div class="player">ID</div>
             <div class="player">Name</div>
@@ -30,8 +39,42 @@
 
         </div>
         {% endfor %}
-    </div>
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div  id="lowRated" >-->
+<!--        <h1>Lowest 100 Rated players</h1>-->
+<!--        <div class="paper">-->
+<!--        <div class="player-grid">-->
+<!--            <div class="player">ID</div>-->
+<!--            <div class="player">Name</div>-->
+<!--            <div class="player">Nationality</div>-->
+<!--            <div class="player">Position</div>-->
+<!--            <div class="player">Rating</div>-->
+<!--            <div class="player">Age</div>-->
+<!--            <div class="player">Potential</div>-->
+<!--            <div class="player">Team</div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; <script>numbers();</script> &ndash;&gt;-->
+<!--        {% for player in result_list2 %}-->
+
+<!--        <div class="player-grid">-->
+<!--            <div class="player">{{player.player_id}}</div>-->
+<!--            <div class="player">{{player.name}}</div>-->
+<!--            &lt;!&ndash; <i class="{{ .country.flag_css }}"></i> &ndash;&gt;-->
+<!--            <div class="player">{{player.nationality}}</div>-->
+<!--            <div class="player">{{player.position}} </div>-->
+<!--            <div class="player">{{player.overall}}</div>-->
+<!--            <div class="player">{{player.age}}</div>-->
+<!--            <div class="player">{{player.potential}}</div>-->
+<!--            <div class="player">{{player.team}}</div>-->
+
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--    </div>-->
+
 </div>
+
 
 
 
