@@ -22,9 +22,9 @@ def analytics(request):
     return render(request, 'analytics.html',{})
 
 def map(request):
-    lst=db.Map(10,True)
+    lst = db.jsonData()
     myDict = {'result_list': lst}
-    return render(request, 'map.html',myDict)
+    return render(request, 'map.html', myDict)
 
 def ratings(request):
     lst = db.topAndLowestRated(100,True)

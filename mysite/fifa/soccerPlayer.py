@@ -57,18 +57,18 @@ class SoccerTeam:
 
 class Map:
 
-    def __init__(self, playername:str, playerrating:int, playernationality:float,coordinates:float):
+    def __init__(self, playername:str, playernationality:str, xcoord:float, ycoord:float):
         self.playername = playername
-        self.playerrating = playerrating
         self.playernationality = playernationality
-        self.coordinates=coordinates
-
+        self.xcoord = xcoord
+        self.ycoord = ycoord
 
     def __str__(self) -> str:
         return f"playername: {self.playername}, " \
-               f"playerrating: {self.playerrating}, " \
                f"playernationality: {self.playernationality}," \
-               f"coordinates: {self.coordinates}"
+               f"xcoord: {self.xcoord}," \
+               f"ycoord: {self.ycoord}"
+
 
 # instead of http response, have a render and pass 2-d list of all filtered results
 # modify get search back, and get attributes back
