@@ -2,7 +2,7 @@
 {% block content %}
 <div class="search">
     <div class="form-box">
-        <form action='test' method="GET">
+        <form action='test' method="GET" id="searchForm" onsubmit="return searchValid();">
             {% csrf_token %}
             <div class="search-grid">
                 <select id="dropdown" name="searchDrop">
@@ -14,8 +14,8 @@
                     <option value="position">Position:</option>
                 </select>
 
-                <input class="text-field" id="name" type="text" name="SearchString" placeholder="Enter info!">
-                <button class="submit-button" onclick="checkValid()">SUBMIT </button>
+                <input class="text-field" id="name" type="text" name="SearchString" placeholder="Enter info!" required>
+                <button class="submit-button" >SUBMIT </button>
 
             </div>
         </form>

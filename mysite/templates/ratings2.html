@@ -2,8 +2,17 @@
 {% block content %}
 
 <div class="form-spacing">
-    <h1>Most common age are: </h1>
-    <div class="paper">
+<!--    <button id="toggle_switch" class="switch" href="{% url 'ratings' %}">Top/Low</button>-->
+<!--        <input type="button"  name="toggle">-->
+<!--        <span class="slider round"></span>-->
+    <button type="button">
+        <a href="{% url 'ratings' %}">Top/Low</a>
+    </button>
+
+
+    <div id="lowRated">
+        <h1>Lowest 100 rated players</h1>
+        <div class="paper">
         <div class="player-grid">
             <div class="player">ID</div>
             <div class="player">Name</div>
@@ -14,14 +23,14 @@
             <div class="player">Potential</div>
             <div class="player">Team</div>
         </div>
-        <script>numbers();</script>
-        {% for player in result_list %}
+        <!-- <script>numbers();</script> -->
+        {% for player in result_list2 %}
 
         <div class="player-grid">
             <div class="player">{{player.player_id}}</div>
             <div class="player">{{player.name}}</div>
-            <div class="player">{{player.nationality}} </div>
-<!--            <div class="player"> <i class="{{ player.nationality.country.flag_css }}"></i></div>-->
+            <!-- <i class="{{ .country.flag_css }}"></i> -->
+            <div class="player">{{player.nationality}}</div>
             <div class="player">{{player.position}} </div>
             <div class="player">{{player.overall}}</div>
             <div class="player">{{player.age}}</div>
@@ -30,7 +39,7 @@
 
         </div>
         {% endfor %}
-    </div>
+
 </div>
 
 
