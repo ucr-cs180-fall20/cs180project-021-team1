@@ -209,7 +209,7 @@ class database:
             team_list.append(SoccerTeam(team_name, num_players, round(avg,2)))
         return sorted(team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]
 
-    def jsonData(self,limit=15):
+    def jsonData(self, limit=15):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList[:limit]:
