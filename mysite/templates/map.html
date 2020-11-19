@@ -52,119 +52,26 @@ var map = new mapboxgl.Map({
   zoom: 3
 });
 
-var geojson = {
-  type: 'FeatureCollection',
-  features: [{
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-77.032, 38.913]
-    },
-    properties: {
-      title: 'Mapbox',
-      description: 'Washington, D.C.'
+var geojson =
+{
+    type: 'FeatureCollection',
+    features: [
+    {% for item in result_list %}
+    {
+     type: 'Feature',
+     geometry: {
+        type: 'Point',
+        coordinates: [{{item.xcoord}}, {{item.ycoord}}]
+     },
+     properties: {
+       title: '{{item.playername}}',
+       description: '{{item.nationality}}'
     }
   },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-122.414, 37.776]
-    },
-    properties: {
-      title: 'Mapbox',
-      description: 'San Francisco, California'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-66.95987701,-54.89677048000001]
-    },
-    properties: {
-      title: 'Lionel Messi',
-      description: 'Argentina'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-9.03482628,41.88056945999999]
-    },
-    properties: {
-      title: 'Cristiano Ronaldo',
-      description: 'Portugal'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-57.62506485,-30.21628761]
-    },
-    properties: {
-      title: 'Neymar Jr',
-      description: 'Brazil'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [6.07421017,53.51039886]
-    },
-    properties: {
-      title: 'Virgil Van Dijk',
-      description: 'Netherlands'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [13.80648041,46.50928879000001]
-    },
-    properties: {
-      title: 'Jan Oblak',
-      description: 'Slovenia'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [3.3149499899999997,51.34577941999997]
-    },
-    properties: {
-      title: 'Kevin De Bruyne',
-      description: 'Belgium'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [15.01696968,51.106681820000006]
-    },
-    properties: {
-      title: 'Robert Lewandowski',
-      description: 'Poland'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [34.92259979,29.501329420000015]
-    },
-    properties: {
-      title: 'Mohamed Salah',
-      description: 'Egypt'
-    }
-  }]
+    {% endfor %}
+    ]
 };
+
 
 
 geojson.features.forEach(function(marker) {

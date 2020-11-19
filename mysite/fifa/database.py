@@ -207,64 +207,16 @@ class database:
                 rating_total += int(player.overall)
             avg = rating_total/num_players
             team_list.append(SoccerTeam(team_name, num_players, round(avg,2)))
-        return sorted(team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]# TODO convert into list of team objects
+        return sorted(team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]
 
-
-    def Map(self, limit=10, top=True):
-        self.setTeamDict()
-        team_list= []
-        countryCordinates=[]
-
-
-        for player in sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]:
-            player_name = player.name
-            player_rating = player.overall
-            player_country=player.nationality
-            if(player_country=='Argentina'):  #has to better way of doing this BS
-                countryCordinates=[-66.95987701,-54.89677048000001]
-
-            if (player_country == 'Portugal'):
-                countryCordinates = [-9.03482628,41.88056945999999]
-
-            if (player_country == 'Brazil'):
-                countryCordinates = [-57.62506485,-30.21628761]
-
-            if (player_country == 'Netherlands'):
-                countryCordinates = [6.07421017,53.51039886]
-
-            if (player_country == 'Slovenia'):
-                countryCordinates = [13.80648041,46.50928879000001]
-
-            if (player_country == 'Belgium'):
-                countryCordinates = [3.3149499899999997,51.34577941999997]
-
-            if (player_country == 'Poland'):
-                countryCordinates = [15.01696968,51.106681820000006]
-
-            if (player_country == 'Egypt'):
-                countryCordinates = [34.92259979,29.501329420000015]
-
-            team_list.append(Map(player_name,player_rating,player_country,countryCordinates))
-
-        return team_list
-
-    def jsonData(self):
+    def jsonData(self,limit=15):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
-        for player in self.playerList:
+        for player in self.playerList[:limit]:
             location = locator.geocode(player.nationality)
-            newJson = {
-                  "type": 'Feature',
-                  "geometry": {
-                      "type": 'Point',
-                      "coordinates": [location.latitude, location.longitude]
-                  },
-                  "properties": {
-                      "title": player.name,
-                      "description": player.nationality
-                  }
-                  }
-            jsonList.append(newJson)
+            tempMap = Map(player.name, player.nationality, location.longitude, location.latitude)
+            jsonList.append(tempMap)
+
         return jsonList
 
     def testGeo(self):
@@ -278,6 +230,10 @@ class database:
 
 # print("\n\nInitialize db")
 db = database(reset=False)
+
+# for item in db.jsonData():
+#     print(item)
+#     print()
 # for player in db.playerList:
 #     print(player.team)
 
@@ -328,9 +284,9 @@ db = database(reset=False)
 # for player in db.topAndLowestRated():
 #     print(player)
 
-print("BEST GOALAZOL")
-for player in db.Map():
-    print(player)
+# print("BEST GOALAZOL")
+# for player in db.Map():
+#     print(player)
 
 #db.testGeo()
 
