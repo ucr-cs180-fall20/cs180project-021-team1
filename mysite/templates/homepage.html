@@ -1,13 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
+
+{% load static %}
+<script type="text/javascript" src="{% static 'field.js' %}"></script>
 <div class="canvas">
     <script src="field.js"></script>
-    <div id="button-grid" class="button-grid">
-        <a href="{% url 'search' %}" class="button-link">Search</a>
-        <a href="{% url 'add' %}" class="button-link">Add</a>
-        <a href="{% url 'analytics' %}" class="button-link">Analytics</a>
+    <div class="button-grid">
+
+        <div class="button-container">
+            <a href="{% url 'search' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Search</div>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'add' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Add</div>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'map' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Map</div>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'ratings' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Ratings</div>
+            </a>
+        </div>
+
+
+        <div class="button-container">
+            <a href="{% url 'comAge' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Most Common Age</div>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'besthit' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Top 10 with Best Hits</div>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'teamratings' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Top 10 Teams</div>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'mostPopularNation' %}">
+                <img class="button-link" src="{% static 'images/soccerball.png' %}" />
+                <div class="soccerball-text">Most Popular Nation</div>
+            </a>
+        </div>
+
+        <!-- <a href="{% url 'add' %}" class="button-link">Add</a> -->
     </div>
 </div>
+
 
 
 

@@ -72,3 +72,15 @@ class Map:
 
 # instead of http response, have a render and pass 2-d list of all filtered results
 # modify get search back, and get attributes back
+
+class Nation:
+
+    def __init__(self, nationname:str, numplayers:int):
+        self.nationname = nationname
+        self.numplayers = numplayers
+
+
+    def __str__(self) -> str:
+        return f"Nationality: {self.nationname}, " \
+               f"numplayers: {self.numplayers}, "
+

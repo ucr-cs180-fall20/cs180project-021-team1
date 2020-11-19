@@ -2,8 +2,13 @@
 from os import path
 import random
 from geopy.geocoders import Nominatim
+import time
 
-from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map
+
+from collections import Counter
+
+
+from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 class database:
 
     def __init__(self,reset=True):
@@ -11,6 +16,7 @@ class database:
         self.fifatxtPath = 'fifaCS180.txt'
         self.playerList = []
         self.team_dict = {}
+        self.nation_dict={}
         if(reset):
             self.resetDB()
         else:
@@ -77,16 +83,18 @@ class database:
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
         self.playerList.append(tempPlayer)
 
-        self.updateDB()
+        txtfile = open(self.fifatxtPath, "a", encoding='utf-8')
+        txtfile.writelines([tempPlayer.toCsvString()])
+        txtfile.close()
 
     def modifyEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
 
         for i in range(len(self.playerList)):
             if player_id == self.playerList[i].player_id:
-                print(f"\nChanging player: {self.playerList[i]}\n")
+                # print(f"\nChanging player: {self.playerList[i]}\n")
                 self.playerList[i] = tempPlayer
-                print(f"\nModified player is: {self.playerList[i]}\n")
+                # print(f"\nModified player is: {self.playerList[i]}\n")
                 break
 
         self.updateDB()
@@ -95,7 +103,7 @@ class database:
         for player in self.playerList:
             if entered_id == player.player_id:
                 self.playerList.remove(player)
-                print(f"Removed player: {player}")
+                # print(f"Removed player: {player}")
                 break
         self.updateDB()
 
@@ -158,8 +166,8 @@ class database:
             print("No search results!")
             print("Returning empty list...")
 
-        for num in resultList:
-            print(num)
+        # for num in resultList:
+        #     print(num)
         return resultList
 
     def mostCommonAge(self):
@@ -195,6 +203,18 @@ class database:
                     dict1[player.team].append(player)
             self.team_dict = dict1
 
+    def setNationDict(self):
+        dict2 = {}
+        if bool(self.nation_dict):
+            dict2 = self.nation_dict
+        else:
+            for player in self.playerList:
+                if not player.nationality in dict2:
+                    dict2[player.nationality] = [player]
+                else:
+                    dict2[player.nationality].append(player)
+            self.nation_dict = dict2
+
     def teamAverageRating(self,limit=10):
         self.setTeamDict()
         team_list = []
@@ -228,7 +248,33 @@ class database:
             print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
 
 
-# print("\n\nInitialize db")
+    def PopularNation(self, limit=10, top=True):
+
+        self.setNationDict()
+        nation = []
+
+        for player in self.nation_dict:
+            nationname=player
+            num_players = len(self.nation_dict[player])
+            nation.append(Nation(nationname,num_players))
+        return sorted(nation, key=lambda x:x.numplayers, reverse=top)[:limit]
+
+        # for player in self.playerList:
+        #     player_nationality=player.nationality
+        #     num_players = len(self.team_dict[player])
+        #
+        #     if player_nationality not in unique:
+        #         unique.append(player_nationality)
+        #
+        # for player in unique:
+        #     temp=player
+        #     nation.append(Nation(temp))
+        #
+        # return nation
+
+
+
+
 db = database(reset=False)
 
 # for item in db.jsonData():
@@ -236,12 +282,12 @@ db = database(reset=False)
 #     print()
 # for player in db.playerList:
 #     print(player.team)
-
+#
 # teamList = db.teamAverageRating()
 #
 # for team in teamList:
 #     print(team)
-#
+
 # for team in db.teamAverageRating():
 #     if len(team) > 2:
 #         print(team)
@@ -288,6 +334,11 @@ db = database(reset=False)
 # for player in db.Map():
 #     print(player)
 
-#db.testGeo()
 
-
+# t0 = time.time()
+# print(f"t0 is {t0}")
+# print("Running db update")
+# db.updateDB()
+# t1 = time.time()
+# print(f"t1 is {t1}")
+# print(f"elapsed time is: {t1-t0}")
