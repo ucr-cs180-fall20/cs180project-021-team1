@@ -28,10 +28,19 @@ def map(request):
 
 def ratings(request):
     lst = db.topAndLowestRated(100,True)
+    # lst2 = db.topAndLowestRated(100, False)
 
     myDict = {'result_list': lst}
-
+    # myDictt = {'result_list': lst2}
     return render(request, 'ratings.html',myDict)
+
+def ratings2 (request):
+    # lst = db.topAndLowestRated(100,True)
+    lst = db.topAndLowestRated(100, False)
+
+    # myDict = {'result_list': lst}
+    myDict = {'result_list2': lst}
+    return render(request, 'ratings2.html',myDict)
 
 def comAge(request):
     lst = db.mostCommonAge()
