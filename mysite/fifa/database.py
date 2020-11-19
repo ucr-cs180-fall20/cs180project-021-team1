@@ -17,6 +17,7 @@ class database:
         self.playerList = []
         self.team_dict = {}
         self.nation_dict={}
+        self.location_dict={}
         if(reset):
             self.resetDB()
         else:
@@ -229,12 +230,17 @@ class database:
             team_list.append(SoccerTeam(team_name, num_players, round(avg,2)))
         return sorted(team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]
 
-    def jsonData(self, limit=15):
+    def jsonData(self, limit=250):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList[:limit]:
-            location = locator.geocode(player.nationality)
-            tempMap = Map(player.name, player.nationality, location.longitude, location.latitude)
+            if player.nationality not in self.location_dict:
+                location = locator.geocode(player.nationality)
+                x = 69.6969 if (location is None) else location.longitude
+                y = 69.6969 if (location is None) else location.latitude
+                self.location_dict.update({player.nationality: (x, y)})
+            x, y = self.location_dict[player.nationality]
+            tempMap = Map(player.name, player.nationality, x, y)
             jsonList.append(tempMap)
 
         return jsonList
