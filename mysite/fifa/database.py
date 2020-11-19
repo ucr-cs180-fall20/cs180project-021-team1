@@ -1,6 +1,7 @@
 # basic imports
 from os import path
 import random
+import time
 
 from collections import Counter
 
@@ -80,16 +81,18 @@ class database:
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
         self.playerList.append(tempPlayer)
 
-        self.updateDB()
+        txtfile = open(self.fifatxtPath, "a", encoding='utf-8')
+        txtfile.writelines([tempPlayer.toCsvString()])
+        txtfile.close()
 
     def modifyEntry(self, player_id, name, nationality, position, overall, age, hits, potential, team):
         tempPlayer = SoccerPlayer(player_id, name, nationality, position, overall, age, hits, potential, team)
 
         for i in range(len(self.playerList)):
             if player_id == self.playerList[i].player_id:
-                print(f"\nChanging player: {self.playerList[i]}\n")
+                # print(f"\nChanging player: {self.playerList[i]}\n")
                 self.playerList[i] = tempPlayer
-                print(f"\nModified player is: {self.playerList[i]}\n")
+                # print(f"\nModified player is: {self.playerList[i]}\n")
                 break
 
         self.updateDB()
@@ -98,7 +101,7 @@ class database:
         for player in self.playerList:
             if entered_id == player.player_id:
                 self.playerList.remove(player)
-                print(f"Removed player: {player}")
+                # print(f"Removed player: {player}")
                 break
         self.updateDB()
 
@@ -161,8 +164,8 @@ class database:
             print("No search results!")
             print("Returning empty list...")
 
-        for num in resultList:
-            print(num)
+        # for num in resultList:
+        #     print(num)
         return resultList
 
     def mostCommonAge(self):
@@ -350,3 +353,10 @@ team_list= db.PopularNation()
 for player in db.PopularNation():
     print(player)
 
+# t0 = time.time()
+# print(f"t0 is {t0}")
+# print("Running db update")
+# db.updateDB()
+# t1 = time.time()
+# print(f"t1 is {t1}")
+# print(f"elapsed time is: {t1-t0}")
