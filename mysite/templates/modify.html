@@ -6,6 +6,14 @@
             {% csrf_token %}
             <div class="add-grid">
                 <div class="add-gri-com">
+                    <label hidden value="player_id">Player ID:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input readonly hidden class="text-field" id="playerId" type="text" name="player_id" value={{mod_id}}>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
                     <label value="player_name">Player Name:</label>
                 </div>
                 <div class="add-gri-com-2">
