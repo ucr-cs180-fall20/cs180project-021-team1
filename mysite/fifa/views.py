@@ -5,6 +5,7 @@ from django.template import loader
 from .soccerPlayer import SoccerPlayer
 from .database import database
 import random
+import time
 
 # db = database(reset=True)
 db = database(reset=True)
@@ -149,7 +150,11 @@ def addResult(request):
      # return HttpResponse()
 
 def team_ratings(request):
-    team_list = db.teamAverageRating()#TODO send dictionary with toy team class
+    t0 = time.time()
+    team_list = db.teamAverageRating()
+    t1 = time.time()
+    duration = t1-t0
+    print(f"\nteam ratings function duration: {duration}\n")
     return render(request,'teamRatings.html',{'team_list':team_list})
 
 

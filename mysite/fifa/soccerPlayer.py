@@ -41,7 +41,6 @@ class SoccerPlayer:
 
         return player
 
-#TODO create team class
 class SoccerTeam:
 
     def __init__(self, teamname:str, numplayers:int, ratingaverage:float):
