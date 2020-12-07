@@ -1,5 +1,7 @@
 from os import path
 from geopy.geocoders import Nominatim
+import pycountry
+import flag
 import time
 from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 
@@ -9,6 +11,7 @@ class database:
     playerList: list[SoccerPlayer]
     team_list: list[SoccerTeam]
     team_dict: dict[list[SoccerPlayer]]
+    icon_dict: dict[str]
 
     def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
@@ -18,6 +21,9 @@ class database:
         self.team_list = []
         self.nation_dict={}
         self.location_dict={}
+
+        self.icon_dict = self.setIconDict()
+
         # whenever new players are added they go here
         self.teamAverageUpdateList = []
         self.topRatedUpdateList = []
@@ -45,10 +51,17 @@ class database:
         self.topRatedUpdateList.append(newplayer)
         self.lowestRatedUpdateList.append(newplayer)
 
+    # dictionary with key-pair <'country_name','icon'>
+    def setIconDict(self):
+        dict1 = {}
+        for country in pycountry.countries:
+            dict1[country.name] = flag.flag(country.alpha_2)
+        return dict1
+
     def setPlayerList(self, cleanList: list):
         for player in cleanList:
             tempPlayer = SoccerPlayer(player[0],player[1],player[2],player[3],player[4],
-                                      player[5],player[6],player[7],player[8])
+                                      player[5],player[6],player[7],player[8], icon=self.getIcon(player[2]))
             self.playerList.append(tempPlayer)
 
     def setTextFile(self):
@@ -75,7 +88,6 @@ class database:
         txtFile = open(self.fifatxtPath, "w", encoding='utf-8')
         for player in self.playerList:
             txtFile.write(player.toCsvString())
-
         txtFile.close()
 
     def cleanTxt(self, rawList: list):
@@ -130,6 +142,9 @@ class database:
                 # print(f"Removed player: {player}")
                 break
         self.updateDB()
+
+    def getIcon(self, nationality:str):
+        return self.icon_dict.get(nationality,'⚽')
 
     def searchEntry(self, attrType:str, searchStr:str):
         #print(f'\n\nRecieved search type: {attrType} and searched for {searchStr}\n\n')
@@ -341,6 +356,9 @@ class database:
 
 
 db = database(reset=False)
+
+for player in db.playerList:
+    print(player.icon)
 
 # for item in db.jsonData():
 #     print(item)

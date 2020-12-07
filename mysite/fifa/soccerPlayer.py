@@ -1,6 +1,6 @@
 class SoccerPlayer:
     def __init__(self, player_id, name, nationality, position,
-                 overall, age, hits, potential, team, icon = '⚽'):
+                 overall, age, hits, potential, team, icon='⚽'):
         self.player_id = player_id
         self.name = name
         self.nationality = nationality
