@@ -18,10 +18,12 @@ class database:
         self.team_list = []
         self.nation_dict={}
         self.location_dict={}
+        
         # whenever new players are added they go here
         self.teamAverageUpdateList = []
         self.topRatedUpdateList = []
         self.lowestRatedUpdateList = []
+
         # values set to false when new players are added,
         # values set to true after analytic recalculations finish
         self.teamAverageUpToDate = False
@@ -116,9 +118,7 @@ class database:
 
         for i in range(len(self.playerList)):
             if player_id == self.playerList[i].player_id:
-                # print(f"\nChanging player: {self.playerList[i]}\n")
                 self.playerList[i] = tempPlayer
-                # print(f"\nModified player is: {self.playerList[i]}\n")
                 break
 
         self.updateDB()
@@ -127,7 +127,6 @@ class database:
         for player in self.playerList:
             if entered_id == player.player_id:
                 self.playerList.remove(player)
-                # print(f"Removed player: {player}")
                 break
         self.updateDB()
 
@@ -239,7 +238,6 @@ class database:
                     dict2[player.nationality].append(player)
             self.nation_dict = dict2
 
-    # TODO incremental analytics
     def teamAverageRating(self, limit=10):
         self.setTeamDict()
 
