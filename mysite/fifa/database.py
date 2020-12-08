@@ -6,9 +6,9 @@ from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 
 class database:
     # playerList type hint (helps autocomplete)
-    playerList: list[SoccerPlayer]
-    team_list: list[SoccerTeam]
-    team_dict: dict[list[SoccerPlayer]]
+    #playerList: list[SoccerPlayer]
+    #team_list: list[SoccerTeam]
+    #team_dict: dict[list[SoccerPlayer]]
 
     def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
