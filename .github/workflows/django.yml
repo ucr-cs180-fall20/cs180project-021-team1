@@ -28,6 +28,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        shell: bash
         working directory: mysite
         python manage.py test
