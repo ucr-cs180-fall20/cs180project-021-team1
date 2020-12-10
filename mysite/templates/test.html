@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="form-spacing">
-    <!-- {{player_name}} was added! -->
     <div class="paper">
 
         {% if result_list %}
         <div class="test-grid">
             <div class="player-grid">
+                <div></div>
                 <div class="player">ID</div>
                 <div class="player">Name</div>
                 <div class="player">Nationality</div>
@@ -24,6 +24,7 @@
         <i class="{{ country.flag_css }}"></i>
         <div class="test-grid">
             <div class="player-grid">
+                <div class="player">{{forloop.counter}}</div>
                 <div class="player">{{player.player_id}}</div>
                 <div class="player">{{player.name}}</div>
                 <div class="player">{{player.nationality}} {{player.icon}}</div>
@@ -49,13 +50,13 @@
         {% endfor %}
 
         {% elif response == "deleted"  %}
-        <h1>Player was deleted!</h1>
+        <h3>Player was deleted!</h3>
         {% elif response == "modified"  %}
-        <h1>Player was modified!</h1>
+        <h3>Player was modified!</h3>
         {% elif response == "added" %}
-        <h1>Player was added!</h1>
+        <h3>Player was added!</h3>
         {% else %}
-        <h1>Sorry, no players found :(</h1>
+        <h3>Sorry, no players found :(</h3>
         {% endif %}
         <!--    TODO Add in button to return to search page-->
 

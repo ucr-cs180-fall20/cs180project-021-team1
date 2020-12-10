@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="form-spacing">
-        <h1>Top 10 rated Teams</h1>
+<div class="form-spacing3">
+        <h3>Top 10 Rated Teams</h3>
         <div class="paper">
-                <div class="rating-grid">
+                <div class="team-grid">
+                        <div></div>
                         <div class="rating">Team Name</div>
                         <div class="rating">Average Rating</div>
                         <div class="rating">Number of Players</div>
 
                 </div>
                 {% for team in team_list %}
-                <div class="rating-grid">
+                <div class="team-grid">
+                        <div class="rating">{{forloop.counter}}</div>
                         <div class="rating">{{team.teamname}}</div>
                         <div class="rating">{{team.ratingaverage}}</div>
                         <div class="rating">{{team.numplayers}}</div>
