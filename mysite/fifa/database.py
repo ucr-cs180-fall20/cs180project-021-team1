@@ -9,10 +9,6 @@ from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 
 class database:
     # playerList type hint (helps autocomplete)
-    playerList: list[SoccerPlayer]
-    team_list: list[SoccerTeam]
-    team_dict: dict[list[SoccerPlayer]]
-    icon_dict: dict[str]
 
     def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
@@ -226,7 +222,8 @@ class database:
         return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
 
     def bestHits(self, limit=10, top=True):
-        return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+        data= sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+        return data
 
     def setTeamDict(self):
         dict1 = {}
@@ -309,7 +306,7 @@ class database:
 
         return (x+xoffset, y+yoffset)
 
-    def jsonData(self, limit=150):
+    def jsonData(self, limit=100):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList[:limit]:
@@ -429,3 +426,8 @@ for player in db.playerList:
 # t1 = time.time()
 # print(f"t1 is {t1}")
 # print(f"elapsed time is: {t1-t0}")
+
+# mylist=db.PopularNation()
+#
+# for player in mylist:
+#     print(player.nationname)
