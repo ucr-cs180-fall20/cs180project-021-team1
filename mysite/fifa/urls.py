@@ -16,6 +16,7 @@ urlpatterns = [
     path('homepage/besthit/', views.besthit, name='besthit'),
     path('homepage/teamRatings/', views.team_ratings, name='teamratings'),
     path('homepage/mostPopularNation/', views.mostPopularNation, name='mostPopularNation'),
+    path('homepage/mostPopularNation/', views.mostPopularNation2, name='mostPopularNation2'),
 
     path('homepage/search/test/', views.test, name='test'),
     path('homepage/add/addResult', views.addResult, name='addResult'),

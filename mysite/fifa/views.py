@@ -7,6 +7,10 @@ from .database import database
 import random
 import time
 
+
+
+
+
 # db = database(reset=True)
 db = database(reset=True)
 
@@ -33,6 +37,7 @@ def ratings(request):
 
     myDict = {'result_list': lst}
     # myDictt = {'result_list': lst2}
+
     return render(request, 'ratings.html',myDict)
 
 def ratings2 (request):
@@ -52,15 +57,37 @@ def comAge(request):
 def besthit(request):
     lst = db.bestHits(10,True)
 
-    myDict = {'result_list': lst}
-    return render(request, 'besthit.html',myDict)
+    myDict2 = {'result_list': lst}
+
+
+    return render(request, 'besthit.html',myDict2)
 
 def mostPopularNation(request):
+    labels=[]
+    data=[]
+
     lst = db.PopularNation()
-
     myDict = {'result_list': lst}
-    return render(request, 'mostPopularNation.html',myDict)
 
+    for player in myDict['result_list']:
+
+         labels.append(player.nationname)
+         data.append(player.numplayers)
+
+    return render(request, 'mostPopularNation.html', {
+            'labels': labels,
+            'data': data,
+        })
+
+
+
+    # return render(request, 'mostPopularNation.html',myDict)
+
+
+def mostPopularNation2(request):
+
+
+    return render(request, 'mostPopularNation.html', )
 def modify(request):
     print(request.GET)
     id = request.GET['modify_player']
@@ -154,6 +181,7 @@ def team_ratings(request):
     team_list = db.teamAverageRating()
     t1 = time.time()
     duration = t1-t0
+
     print(f"\nteam ratings function duration: {duration}\n")
     return render(request,'teamRatings.html',{'team_list':team_list})
 

@@ -213,7 +213,8 @@ class database:
         return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
 
     def bestHits(self, limit=10, top=True):
-        return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+        data= sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+        return data
 
     def setTeamDict(self):
         dict1 = {}
@@ -289,7 +290,7 @@ class database:
             print('Finished recalculating teams')
         return sorted(self.team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]
 
-    def jsonData(self, limit=250):
+    def jsonData(self, limit=100):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList[:limit]:
@@ -407,3 +408,8 @@ db = database(reset=False)
 # t1 = time.time()
 # print(f"t1 is {t1}")
 # print(f"elapsed time is: {t1-t0}")
+
+# mylist=db.PopularNation()
+#
+# for player in mylist:
+#     print(player.nationname)
