@@ -1,6 +1,6 @@
 class SoccerPlayer:
     def __init__(self, player_id, name, nationality, position,
-                 overall, age, hits, potential, team):
+                 overall, age, hits, potential, team, icon='⚽'):
         self.player_id = player_id
         self.name = name
         self.nationality = nationality
@@ -10,12 +10,13 @@ class SoccerPlayer:
         self.hits = hits
         self.potential = potential
         self.team = team
+        self.icon = icon
 
 
     def __str__(self) -> str:
         return f"id: {self.player_id}, " \
                f"Name: {self.name}, " \
-               f"Nationality: {self.nationality}, " \
+               f"Nationality: {self.nationality} {self.icon}, " \
                f"position: {self.position}, " \
                f"overall: {self.overall}, " \
                f"age: {self.age}, " \
@@ -41,7 +42,6 @@ class SoccerPlayer:
 
         return player
 
-#TODO create team class
 class SoccerTeam:
 
     def __init__(self, teamname:str, numplayers:int, ratingaverage:float):
