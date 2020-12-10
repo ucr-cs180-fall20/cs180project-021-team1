@@ -3,6 +3,7 @@ from geopy.geocoders import Nominatim
 import pycountry
 import flag
 import time
+import random
 from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 
 
@@ -21,13 +22,13 @@ class database:
         self.team_list = []
         self.nation_dict={}
         self.location_dict={}
-
         self.icon_dict = self.setIconDict()
 
         # whenever new players are added they go here
         self.teamAverageUpdateList = []
         self.topRatedUpdateList = []
         self.lowestRatedUpdateList = []
+
         # values set to false when new players are added,
         # values set to true after analytic recalculations finish
         self.teamAverageUpToDate = False
@@ -128,9 +129,7 @@ class database:
 
         for i in range(len(self.playerList)):
             if player_id == self.playerList[i].player_id:
-                # print(f"\nChanging player: {self.playerList[i]}\n")
                 self.playerList[i] = tempPlayer
-                # print(f"\nModified player is: {self.playerList[i]}\n")
                 break
 
         self.updateDB()
@@ -139,7 +138,6 @@ class database:
         for player in self.playerList:
             if entered_id == player.player_id:
                 self.playerList.remove(player)
-                # print(f"Removed player: {player}")
                 break
         self.updateDB()
 
@@ -254,7 +252,6 @@ class database:
                     dict2[player.nationality].append(player)
             self.nation_dict = dict2
 
-    # TODO incremental analytics
     def teamAverageRating(self, limit=10):
         self.setTeamDict()
 
@@ -304,7 +301,15 @@ class database:
             print('Finished recalculating teams')
         return sorted(self.team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]
 
-    def jsonData(self, limit=250):
+    def coordOffset(self,coord:tuple):
+        x = coord[0]
+        y = coord[1]
+        xoffset = random.uniform(-1, 1)
+        yoffset = random.uniform(-1, 1)
+
+        return (x+xoffset, y+yoffset)
+
+    def jsonData(self, limit=150):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList[:limit]:
@@ -313,10 +318,9 @@ class database:
                 x = 69.6969 if (location is None) else location.longitude
                 y = 69.6969 if (location is None) else location.latitude
                 self.location_dict.update({player.nationality: (x, y)})
-            x, y = self.location_dict[player.nationality]
+            x, y = self.coordOffset(self.location_dict[player.nationality])
             tempMap = Map(player.name, player.nationality, x, y)
             jsonList.append(tempMap)
-
         return jsonList
 
     def testGeo(self):
