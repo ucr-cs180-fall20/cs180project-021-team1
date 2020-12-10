@@ -1,8 +1,7 @@
-
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("topNav").style.height = "50%";
 }
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("topNav").style.height = "0%";
 }

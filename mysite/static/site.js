@@ -75,7 +75,7 @@ function searchValid() {
       var checkDropdown = document.forms["searchForm"]["dropdown"].value;
       // var dropdown1 = checkDropdown.options[checkDropdown.player_name].value;
       var inputValue = document.forms["searchForm"]["name"].value;
-      if (checkDropdown == "player_name" && letterOnly.test(inputValue) == false){
+      if (checkDropdown == "player_name" && letterOnly.test(inputValue) == false) {
             // letterOnly.test(inputValue) == false
             console.log("player name test is working!!!!!!");
             window.alert('Please input alphabet characters only for player name.');
@@ -83,7 +83,7 @@ function searchValid() {
             return false;
       }
 
-      if (checkDropdown == "age" && (numberOnly.test(inputValue) == false || inputValue < 1 || inputValue > 99)){
+      if (checkDropdown == "age" && (numberOnly.test(inputValue) == false || inputValue < 1 || inputValue > 99)) {
             console.log(" age test is working ");
             console.log("age value is : " + inputValue);
             window.alert('Please input a vaild age between 1 to 99');
@@ -91,7 +91,7 @@ function searchValid() {
             return false;
       }
 
-      if (checkDropdown == "nationality" && letterOnly.test(inputValue) == false){
+      if (checkDropdown == "nationality" && letterOnly.test(inputValue) == false) {
             // letterOnly.test(inputValue) == false
             console.log("nationality test is working!!!!!!");
             window.alert('Please input alphabet characters only for nationality.');
@@ -99,14 +99,14 @@ function searchValid() {
             return false;
       }
 
-      if (checkDropdown == "club" &&  bothlet.test(inputValue) == false) {
+      if (checkDropdown == "club" && bothlet.test(inputValue) == false) {
             console.log("club test is working!!!!!!");
             window.alert('Please input alphabet characters and number only for club name. ');
             // document.getElementById('clubName').focus();
             return false;
       }
 
-      if (checkDropdown == "rating" && (numberOnly.test(inputValue) == false || inputValue < 1 || inputValue > 99)){
+      if (checkDropdown == "rating" && (numberOnly.test(inputValue) == false || inputValue < 1 || inputValue > 99)) {
             console.log(" rating test is working ");
             console.log("rating value is : " + inputValue);
             window.alert('Please input a vaild rating between 1 to 99');
@@ -114,23 +114,28 @@ function searchValid() {
             return false;
       }
 
-      if (checkDropdown == "position" && positionOnly.test(inputValue) == false){
+      if (checkDropdown == "position" && positionOnly.test(inputValue) == false) {
             // letterOnly.test(inputValue) == false
             console.log("position test is working!!!!!!");
             window.alert('Please input a valid position and add " | " for multiple positions without spaces');
             // document.getElementById('playerName').focus();
             return false;
       }
-      
+
 
       console.log("hello world");
       return true;
 }
 
-// $(document).ready(function () {
-//    $("#lowRated").hide();
-//    $('#toggle_switch').on('click',function(){
-//      $("#topRated").toggle("#lowRated");
-//      $("#lowRated").toggle();
-//    });
+$(document).ready(function () {
+      // $("#lowRated").hide();
+      $('#btnToggle').on('click', function () {
+            $("#topRated").toggle();
+            // $("#lowRated").toggle('#topRated');
+      });
+});
+// $("#btnToggle").on('click', function () {
+//       $("#topRated").toggle();
+//       $("#lowRated").toggle();
 // });
+

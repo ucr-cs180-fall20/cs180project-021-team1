@@ -204,18 +204,6 @@ class database:
                     dict1[player.team].append(player)
             self.team_dict = dict1
 
-    def setNationDict(self):
-        dict2 = {}
-        if bool(self.nation_dict):
-            dict2 = self.nation_dict
-        else:
-            for player in self.playerList:
-                if not player.nationality in dict2:
-                    dict2[player.nationality] = [player]
-                else:
-                    dict2[player.nationality].append(player)
-            self.nation_dict = dict2
-
     def teamAverageRating(self,limit=10):
         self.setTeamDict()
         team_list = []
@@ -253,12 +241,22 @@ class database:
             print("player nationality: \n", player.nationality)
             print("Latitude = {}, Longitude = {}".format(location.latitude, location.longitude))
 
+    def setNationDict(self):
+        dict2 = {}
+        if bool(self.nation_dict):
+            dict2 = self.nation_dict
+        else:
+            for player in self.playerList:
+                if not player.nationality in dict2:
+                    dict2[player.nationality] = [player]
+                else:
+                    dict2[player.nationality].append(player)
+            self.nation_dict = dict2
 
     def PopularNation(self, limit=10, top=True):
 
         self.setNationDict()
         nation = []
-
         for player in self.nation_dict:
             nationname=player
             num_players = len(self.nation_dict[player])

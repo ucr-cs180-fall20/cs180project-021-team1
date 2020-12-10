@@ -2,9 +2,10 @@
 {% block content %}
 
 <div class="form-spacing">
-    <h1>Top 10 Players With The Best Hits</h1>
+    <h3>Top 10 Players With The Best Hits</h3>
     <div class="paper">
         <div class="player-grid">
+            <div></div>
             <div class="player">ID</div>
             <div class="player">Name</div>
             <div class="player">Nationality</div>
@@ -17,6 +18,7 @@
 
         {% for player in result_list %}
         <div class="player-grid">
+            <div class="player">{{forloop.counter}}</div>
             <div class="player">{{player.player_id}}</div>
             <div class="player">{{player.name}}</div>
             <div class="player">{{player.nationality}}</div>

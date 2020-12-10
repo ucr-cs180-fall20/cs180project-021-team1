@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="form-spacing">
-        <h1>Most Popular Nations</h1>
+<div class="form-spacing2">
+        <h3>Most Popular Nations</h3>
         <div class="paper">
                 <div class="rating-grid">
+                        <div></div>
                         <div class="rating">Nations</div>
                         <div class="rating">Number of Players</div>
 
                 </div>
+
                 {% for player in result_list %}
                 <div class="rating-grid">
+                        <div class="rating">{{forloop.counter}}</div>
                         <div class="rating">{{player.nationname}}</div>
                         <div class="rating">{{player.numplayers}}</div>
                 </div>
