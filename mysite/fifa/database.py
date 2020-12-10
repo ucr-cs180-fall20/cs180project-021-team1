@@ -1,14 +1,14 @@
 from os import path
 from geopy.geocoders import Nominatim
+import pycountry
+import flag
 import time
+import random
 from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 
 
 class database:
     # playerList type hint (helps autocomplete)
-    playerList: list[SoccerPlayer]
-    team_list: list[SoccerTeam]
-    team_dict: dict[list[SoccerPlayer]]
 
     def __init__(self,reset=True):
         self.fifacsvPath = '../FIFA-21Complete.csv'
@@ -18,10 +18,13 @@ class database:
         self.team_list = []
         self.nation_dict={}
         self.location_dict={}
+        self.icon_dict = self.setIconDict()
+
         # whenever new players are added they go here
         self.teamAverageUpdateList = []
         self.topRatedUpdateList = []
         self.lowestRatedUpdateList = []
+
         # values set to false when new players are added,
         # values set to true after analytic recalculations finish
         self.teamAverageUpToDate = False
@@ -45,10 +48,17 @@ class database:
         self.topRatedUpdateList.append(newplayer)
         self.lowestRatedUpdateList.append(newplayer)
 
+    # dictionary with key-pair <'country_name','icon'>
+    def setIconDict(self):
+        dict1 = {}
+        for country in pycountry.countries:
+            dict1[country.name] = flag.flag(country.alpha_2)
+        return dict1
+
     def setPlayerList(self, cleanList: list):
         for player in cleanList:
             tempPlayer = SoccerPlayer(player[0],player[1],player[2],player[3],player[4],
-                                      player[5],player[6],player[7],player[8])
+                                      player[5],player[6],player[7],player[8], icon=self.getIcon(player[2]))
             self.playerList.append(tempPlayer)
 
     def setTextFile(self):
@@ -75,7 +85,6 @@ class database:
         txtFile = open(self.fifatxtPath, "w", encoding='utf-8')
         for player in self.playerList:
             txtFile.write(player.toCsvString())
-
         txtFile.close()
 
     def cleanTxt(self, rawList: list):
@@ -116,9 +125,7 @@ class database:
 
         for i in range(len(self.playerList)):
             if player_id == self.playerList[i].player_id:
-                # print(f"\nChanging player: {self.playerList[i]}\n")
                 self.playerList[i] = tempPlayer
-                # print(f"\nModified player is: {self.playerList[i]}\n")
                 break
 
         self.updateDB()
@@ -127,9 +134,11 @@ class database:
         for player in self.playerList:
             if entered_id == player.player_id:
                 self.playerList.remove(player)
-                # print(f"Removed player: {player}")
                 break
         self.updateDB()
+
+    def getIcon(self, nationality:str):
+        return self.icon_dict.get(nationality,'⚽')
 
     def searchEntry(self, attrType:str, searchStr:str):
         #print(f'\n\nRecieved search type: {attrType} and searched for {searchStr}\n\n')
@@ -213,7 +222,8 @@ class database:
         return sorted(self.playerList, key=lambda x:x.overall, reverse=top)[:limit]
 
     def bestHits(self, limit=10, top=True):
-        return sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+        data= sorted(self.playerList, key=lambda x:int(x.hits), reverse=top)[:limit]
+        return data
 
     def setTeamDict(self):
         dict1 = {}
@@ -239,7 +249,6 @@ class database:
                     dict2[player.nationality].append(player)
             self.nation_dict = dict2
 
-    # TODO incremental analytics
     def teamAverageRating(self, limit=10):
         self.setTeamDict()
 
@@ -289,7 +298,15 @@ class database:
             print('Finished recalculating teams')
         return sorted(self.team_list, key=lambda team: team.ratingaverage, reverse=True)[:limit]
 
-    def jsonData(self, limit=250):
+    def coordOffset(self,coord:tuple):
+        x = coord[0]
+        y = coord[1]
+        xoffset = random.uniform(-1, 1)
+        yoffset = random.uniform(-1, 1)
+
+        return (x+xoffset, y+yoffset)
+
+    def jsonData(self, limit=100):
         jsonList = []
         locator = Nominatim(user_agent="myGeocoder")
         for player in self.playerList[:limit]:
@@ -298,10 +315,9 @@ class database:
                 x = 69.6969 if (location is None) else location.longitude
                 y = 69.6969 if (location is None) else location.latitude
                 self.location_dict.update({player.nationality: (x, y)})
-            x, y = self.location_dict[player.nationality]
+            x, y = self.coordOffset(self.location_dict[player.nationality])
             tempMap = Map(player.name, player.nationality, x, y)
             jsonList.append(tempMap)
-
         return jsonList
 
     def testGeo(self):
@@ -341,6 +357,9 @@ class database:
 
 
 db = database(reset=False)
+
+for player in db.playerList:
+    print(player.icon)
 
 # for item in db.jsonData():
 #     print(item)
@@ -407,3 +426,8 @@ db = database(reset=False)
 # t1 = time.time()
 # print(f"t1 is {t1}")
 # print(f"elapsed time is: {t1-t0}")
+
+# mylist=db.PopularNation()
+#
+# for player in mylist:
+#     print(player.nationname)
