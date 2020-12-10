@@ -15,11 +15,14 @@ body {
   div {
     font-size: 14px;
   }
-  h1 {
+  /* h1 {
     font-size: 200px;
     color: rgb(169, 253, 34);
     margin: 0;
     padding: 0;
+  } */
+  h4 {
+    color: rgb(169, 253, 34);
   }
   h2 {
     color: rgb(169, 253, 34);
@@ -28,6 +31,9 @@ body {
   h3 {
     color: rgb(169, 253, 34);
     font-size: 40px;
+  }
+  p {
+    color: rgb(169, 253, 34);
   }
 * {
     cursor: url(/static/images/Soccer_Ball_Cursor.png),auto;
