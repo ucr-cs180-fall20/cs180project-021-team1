@@ -4,6 +4,7 @@ import pycountry
 import flag
 import time
 import random
+import unittest
 from fifa.soccerPlayer import SoccerPlayer, SoccerTeam,Map,Nation
 
 
@@ -368,8 +369,8 @@ class database:
 
 db = database(reset=False)
 
-for player in db.playerList:
-    print(player.icon)
+#for player in db.playerList:
+#    print(player.icon)
 
 # for item in db.jsonData():
 #     print(item)
