@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="search">
+    <div class="form-box">
+        <form action='test' method="GET" id="searchForm" onsubmit="return searchValid();">
+            {% csrf_token %}
+            <div class="search-grid">
+                <select id="dropdown" name="searchDrop">
+                    <option value="player_name">Player Name:</option>
+                    <option value="age">Age:</option>
+                    <option value="nationality">Nationality:</option>
+                    <option value="club">Club:</option>
+                    <option value="rating">Player Rating:</option>
+                    <option value="position">Position:</option>
+                </select>
+
+                <input class="text-field" id="name" type="text" name="SearchString" placeholder="Enter Info" required>
+                <button class="submit-button">SUBMIT </button>
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

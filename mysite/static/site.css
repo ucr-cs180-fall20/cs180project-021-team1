@@ -1,0 +1,83 @@
+body {
+    margin: 0px;
+    height: 100%;
+    color:white;
+    font-family: Verdana, sans-serif;
+    background-color: rgb(0, 24, 4);
+    
+  }
+  li {
+    list-style-type: none;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  div {
+    font-size: 14px;
+  }
+  /* h1 {
+    font-size: 200px;
+    color: rgb(169, 253, 34);
+    margin: 0;
+    padding: 0;
+  } */
+  h4 {
+    color: rgb(169, 253, 34);
+  }
+  h2 {
+    color: rgb(169, 253, 34);
+    padding-bottom: 40px;
+  }
+  h3 {
+    color: rgb(169, 253, 34);
+    font-size: 40px;
+  }
+  p {
+    color: rgb(169, 253, 34);
+  }
+* {
+    cursor: url(/static/images/Soccer_Ball_Cursor.png),auto;
+}
+
+.submit-button{
+  border: 1px solid rgb(169, 253, 34);
+  background-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+/* smaller screens */
+  @media screen and (max-width: 1400px) {
+    div {
+      font-size: 12px;
+    }
+    .button-link, .submit-button{
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 10px;
+      padding-bottom: 8px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    div {
+      font-size: 12px;
+    }
+    .form-box{
+      width: 600px;
+    }
+  }
+  /* @media screen and (max-width: 600px) {
+    div {
+      font-size: 10px;
+    }
+    .player-grid {
+      grid-template-columns: 50px 75px 50px 50px 50px 50px 50px 75px;
+    }
+  } */
+  
+
+  

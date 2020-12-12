@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="form-spacing">
+<!--    <button id="toggle_switch" class="switch" href="{% url 'ratings' %}">Top/Low</button>-->
+<!--        <input type="button"  name="toggle">-->
+<!--        <span class="slider round"></span>-->
+
+<div class="paper">
+
+  <div id="container" style="align-items:center; width: 75%;">
+              <h3 style="text-align:center">Top 10 Most Popular Nations </h3>
+
+    <canvas id="pie-chart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#912121', '#43475c', '#33343b', '#3b3b33', '#3b333b', '#40d11b', '#a41bd1','#0a0a0a', '#00e5ed', '#edc200'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+  </script>
+   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0">
+ options: {
+        plugins: {
+            datalabels: {
+                formatter: function(value, context) {
+                    return context.chart.data.labels[context.dataIndex];
+                }
+            }
+        }
+}
+</div>
+</div>
+   </script>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<div id="topNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="navbar-grid">
+        <div>
+            <a href="{% url 'homepage' %}" class="fifa21">
+                <h2>FIFA21</h2>
+            </a>
+        </div>
+        <div class="nav-col-1">
+            <h2>Features</h2>
+            <br />
+            <a href="{% url 'search' %}">Search</a>
+            <a href="{% url 'add' %}">Add</a>
+        </div>
+        <div class="nav-col-2">
+            <h2>Analytics</h2>
+            <br />
+            <a href="{% url 'map' %}">Map</a>
+            <a href="{% url 'ratings' %}">Top and Lowest Ratings</a>
+            <a href="{% url 'comAge' %}">Most Common Ages</a>
+            <a href="{% url 'besthit' %}">Top 10 Teams with Best Hits</a>
+            <a href="{% url 'teamratings' %}">Top 10 Rated Teams</a>
+            <a href="{% url 'mostPopularNation' %}">Most Popular Nations</a>
+        </div>
+    </div>
+</div>
+<span class="open-nav" onclick="openNav()">&#9776; FIFA21</span>

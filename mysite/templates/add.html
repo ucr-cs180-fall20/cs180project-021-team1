@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="add">
+    <div class="form-box">
+        <form action="addResult" method="GET" id="addForm" onsubmit="return checkValid();">
+            {% csrf_token %}
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="player_name">Player Name:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="playerName" type="text" name="name" placeholder="Player Name"
+                        required>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="age">Age:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="playerAge" type="text" name="age" placeholder="Age" required>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="nationality">Nationality:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="nationality" type="text" name="nationality" placeholder="Nationality"
+                        required>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="club">Club:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="clubName" type="text" name="club" placeholder="Club Name" required>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="rating">Player Rating:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="playerRating" type="text" name="rating" placeholder="Player Rating"
+                        required>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="position">Position:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="playerPosition" type="text" name="position"
+                        placeholder="Player Position" required>
+                </div>
+            </div>
+            <div class="add-grid">
+                <div class="add-gri-com">
+                    <label value="potential">Potential:</label>
+                </div>
+                <div class="add-gri-com-2">
+                    <input class="text-field" id="playerPotential" type="text" name="potential" placeholder="Potential"
+                        required>
+                </div>
+            </div>
+            <div class="button-spacing">
+                <button type="submit" class="submit-button">ADD</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
